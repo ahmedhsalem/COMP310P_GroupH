@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+  <title>Settings</title>
+  <link href="layout.css" rel="stylesheet" type="text/css"/>
+  <style>
+      .entry, textarea {
+    	float: right;
+    	width: 500px;
+    	resize: none;
+    	padding: 1px;
+    	margin-right: 200px;
+    }
+  </style>
+  </head>
+  <body>
+	<div id="wrapper">
+	<div id="banner">
+	<a href="http://www.apple.com/" style="none"><img src="logo.png"
+	width="20%" height="70px"
+	align="left">
+	</div>
+	<div id="menuTop">
+		<header id="page_header">
+			<nav>
+				<ul>
+					<li><a href="index.html" class="links">Events</a>
+					<li><a href="DVD_Rental_Page.html" class="links">Locations</a>
+					<li><a href="DVD_Returns.html" class="links">Request an Event</a>
+					<li><a href="DVD_Returns.html" class="links">Contact Us</a>
+				</ul>
+			</nav>
+		</header>
+		<input type="submit" value="Go" id="go"/>
+		<input type="text" id="search" class="search"/>
+		<label for="search" id="label">Search:</label>
+	</div>
+	<div id="columnRight">
+	</div>
+	<div id="content">
+	<div class="innercontent">
+	<h1 style="margin-top: 0px">Settings</h1>
+		<label for="username" class="label"> Change Username:</label>
+		<input type="text" id="username" class="entry"/> <br/><br/>
+		
+		<label for="email" class="label"> Change E-mail:</label>
+		<input type="email" id="email" class="entry"/> <br/><br/>
+		
+		<label for="password" class="label">Change Password:</label>
+		<input type="password" id="password" class="entry"/> <br/><br/>
+				
+		<label for="address" class="label">Change Address:</label>
+		<textarea id = "address" rows="3" class="entry"></textarea><br/><br/><br/><br/>
+		
+		<label for="mobile" class="label">Change Mobile Number:</label>
+		<input type="tel" id="mobile" class="entry"/> <br/><br/><br/><br/>
+		
+		<input type="submit" id="submit" value="Confirm Changes" style= "font-size: 15px; background: #f5f5f5;
+		 width: 20%; margin-right: 20%" class="entry" />
+	</div>
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+  <title>Opening Page</title>
+  <style>
+  #signinBox, #registerBox {
+  		width: 250px;
+  		height: 150px;
+  		border: 1px solid black;
+  		padding: 15px;
+  		float: left;
+  }
+  #signinBox {
+    	border-top-left-radius: 40px;
+  		border-bottom-left-radius: 40px;
+  	}
+  #registerBox {
+  		border-top-right-radius: 40px;
+  		border-bottom-right-radius: 40px;
+  }
+  #logo {
+  		display: block;
+    	margin: auto;
+    	margin-top: 10%;
+  }
+
+    input {
+    	float: right;
+    	width: 60%;
+    	resize: none;
+    }
+    #wrapper {
+		width:40%;
+		margin: auto;
+}
+
+  </style>
+</head>
+<body>
+<img src="logo.png" width="20%" height="70px" id="logo">
+<div id="wrapper">
+	<div id="signinBox">
+		<h3 align="center">Sign In</h3>
+		
+		<label for="username" class="label">Username:</label>
+		<input type="text" id="username"/> <br/><br/>
+		
+		<label for="password" class="label">Password:</label>
+		<input type="password" id="password"/> <br/><br/>
+				
+		<input type="submit" id="submit" value="Sign In" style= "font-size: 15px; background: #f5f5f5;
+		 width: 30%; margin-right: 20%" />
+	</div>
+	
+	<div id="registerBox">
+		<label for="register"><h3 align="center">Register</h3></label><br/>
+		<input type="submit" value="Click Here To Register" id="register" style= "font-size: 15px; background: #f5f5f5;
+		 width: 70%; margin-right: 13%"/>
+	</div>
+</div>
+</body>
+</html>

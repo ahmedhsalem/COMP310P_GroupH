@@ -1,0 +1,71 @@
+<?php
+?>
+<!DOCTYPE html>
+<head>
+  <title>Registration</title>
+  <style>
+  #registrationBox {
+  		width: 450px;
+  		height: 350px;
+  		border: 1px solid black;
+  		margin: auto;
+  		border-radius: 40px;
+  		padding: 20px;
+  		padding-top: 10px;
+  }
+  #logo {
+  		display: block;
+    	margin: auto;
+    	margin-top: 10%;
+  }
+
+    input, textarea {
+    	float: right;
+    	width: 300px;
+    	resize: none;
+    }
+
+  </style>
+</head>
+<body>
+<img src="logo.png" width="20%" height="70px" id="logo">
+	<div id="registrationBox">
+		<h2 align="center">Register A New User</h2>
+		
+		<form name="form1" action="#">
+		
+			<label for="username" class="label">Username:</label>
+			<input type="text" id="username" name="username"/> <br/><br/>
+		
+			<label for="email" class="label">E-mail:</label>
+			<input type="email" id="email" name="email"/> <br/><br/>
+		
+			<label for="password" class="label">Password:</label>
+			<input type="password" id="password" name="password"/> <br/><br/>
+		
+			<label for="confirmPassword" class="label">Confirm Password:</label>
+			<input type="password" id="confirmPassword" name="confirmpassword"/> <br/><br/>
+		
+			<label for="address" class="label">Address:</label>
+			<textarea id = "address" rows="3"></textarea><br/><br/><br/><br/>
+		
+			<label for="mobile" class="label">Mobile Number:</label>
+			<input type="tel" id="mobile" name="mobile"/> <br/><br/>
+		
+			<input type="submit" id="submit" value="Register" style= "font-size: 15px; background: #f5f5f5;
+			 width: 30%; margin-right: 20%" onclick="ValidateEmail(document.form1.email)/>
+		 
+		 </form>
+	</div>
+
+<script src = "email_submission.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
