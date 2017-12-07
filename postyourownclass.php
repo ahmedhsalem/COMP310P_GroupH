@@ -37,17 +37,17 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'] !=''){
                     <div class="col-sm-9">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" id="calorieCheckbox" name="check_list[]"  value="cooking">Cooking
+                                <input type="checkbox" id="calorieCheckbox" name="check_list[]"  value="soprano">Soprano
                             </label>
                         </div>
 						<div class="checkbox">
                             <label>
-                                <input type="checkbox" id="calorieCheckbox" name="check_list[]" value="language">Languages
+                                <input type="checkbox" id="calorieCheckbox" name="check_list[]" value="tenor">Tenor
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" id="saltCheckbox" name="check_list[]" value="reading">Reading
+                                <input type="checkbox" id="saltCheckbox" name="check_list[]" value="mezzo">Mezzo
                             </label>
                         </div>
                     </div>
