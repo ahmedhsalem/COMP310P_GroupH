@@ -1,3 +1,5 @@
+<!-- Page where user can create class -->
+
 <!doctype html> 
 <?php  
 error_reporting(0);
