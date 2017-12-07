@@ -22,4 +22,5 @@ if(isset($action) && $action =='output'){
 		echo '<script type="text/javascript">window.location.href="../dashboard.php";</script>';
 	}
 }
-?>
+?> 
+.
