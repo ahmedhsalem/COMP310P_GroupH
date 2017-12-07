@@ -1,4 +1,4 @@
-<!-- Page where user can create class -->
+<!-- Page where user can view classes -->
 
 <!doctype html> 
 <?php  
@@ -11,6 +11,7 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'] !=''){
 
 <script>
 <!-- scripting would go here -->
+</script>
 
 <body>
 <?php include('include/userheader.php');?>
