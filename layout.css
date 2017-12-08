@@ -50,15 +50,11 @@
 	#columnRight {
 		width:25%;
 		height: 438px;
-		background-color: green;
+		background-color: white;
 		float: right;
 		
 }
-	#footer {
-		width:100%;
-		height: 75px;
-		background-color: pink;
-}
+
  #go {
       margin-right: 1.5%;
       padding: 5px;
@@ -82,5 +78,6 @@
   	padding-top: 12px;
   	padding-right: 10px;  	
 }	
-  	
+
+
 

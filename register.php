@@ -8,12 +8,12 @@ $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 if(isset($_GET['username'])) { 
 $username = test_input($_GET['username']);
-$password = test_input($_GET['password']);
+
 // Connect to the database
 $connection = connect();
 
-//SQL to find the email
-$sql = "SELECT * FROM user WHERE username='$username' AND password='$password' ";
+//SQL to find the username
+$sql = "SELECT * FROM user WHERE username='$username'";
 
 //Execute query and get the result
 $result = mysqli_query($connection, $sql);
@@ -22,10 +22,19 @@ $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_array($result);
 
 //If the user doesn't exist there will be no rows in the $result
-if (mysqli_num_rows($result) == 0) {
-    $message = "Username and password combination not valid";
-}  else {	
-		$_SESSION['username']=$username;
+if (mysqli_num_rows($result) > 0) {
+    $message = "Please select a different username, username is already taken";
+}  else {		
+		$password = test_input($_GET['password']);
+		$firstname = test_input($_GET['firstname']);
+		$lastname = test_input($_GET['lastname']);
+		$email = test_input($_GET['email']);
+		$address = test_input($_GET['address']);
+		$mobile = test_input($_GET['mobile']);
+		
+		$sql = "INSERT INTO user ( first_name, last_name, username, password, email, address, mobile_number ) VALUES 
+		( '$firstname', '$lastname', '$username', '$password', '$email', '$address', '$mobile' )";
+		mysqli_query($connection, $sql);
 		header("Location: home_page.php");
 		}
 mysqli_free_result($result);
