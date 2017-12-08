@@ -42,7 +42,7 @@
 		
 		<form name="form1" method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onSubmit="return checkForm(this)" >
 		
-			<!-- Adding Value to inputs from the PHP form because if not every time, the User has to write everything from the beginning --!>
+			<!-- Adding Value to inputs from the PHP form because if not every time, the User has to write everything from the beginning -->
 			
 			<label for="username" class="label">Username:</label>
 			<input type="text" id="username" name="username" value ="<?php if(isset($_GET['username'])) echo htmlspecialchars($_GET['username']); ?>"/>
