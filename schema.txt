@@ -2,160 +2,374 @@ CREATE DATABASE opera_house;
 DROP TABLE IF EXISTS feedback, ticket, requested_event, location, room, user, trigger_alert, room_category, category, administrator;
 
 /*removed approved event and room level tables */ 
+/*added dummy variable to requested_event */
+/*changed category_id field in event_requested for check_list that will allow for more than one category in this format: opera<br>ballet<br>outdoors<br> */ 
 
-CREATE TABLE user (
-	user_id INTEGER AUTO_INCREMENT PRIMARY KEY,
-	username VARCHAR(30),
-	password VARCHAR(30),
-	first_name VARCHAR(255),
-	last_name VARCHAR(255),
-	email VARCHAR(255),
-	address VARCHAR(255),
-	mobile_number VARCHAR(12)
+CREATE TABLE `administrator` (
+  `administrator_id` int(11) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO user ( first_name, last_name, username, password, email, address, mobile_number ) VALUES 
-	('Ahmed', 'Salem', 'ahmedsalem', 'ahmed', 'ahmedhsalem@hotmail.com', 'NW1 5PL', '07442156678' ),
-	('Wayne', 'Hsu', 'waynehsu', 'wayne', 'wayne.hsu.15@ucl.ac.uk', 'W1T 5HB', '071824728473' ),
-	('Bea', 'Egido', 'beaegido', 'bea', 'beatriz.egido.15@ucl.ac.uk', 'NW8 8UW', '07234724378' ),
-	('James', 'Wang', 'jameswang', 'james', 'james.wang@doesntexist.ac.uk', 'n/a', '0700000000' );
+--
+-- Dumping data for table `administrator`
+--
 
-CREATE TABLE room (
-	room_id INTEGER AUTO_INCREMENT PRIMARY KEY,
-	location_id INTEGER,
-	room_name VARCHAR(255),
-	capacity INTEGER,
-	price_per_hour INTEGER
-) ENGINE=Innodb DEFAULT CHARSET=utf8;
+INSERT INTO `administrator` (`administrator_id`, `first_name`, `last_name`, `username`, `password`) VALUES
+(1, 'Michael', 'Smith', 'Msmith87', 'Michael'),
+(2, 'John', 'Smith', 'Jsmith99', 'John'),
+(3, 'David', 'Smith', 'Dsmith02', 'David');
 
-INSERT INTO room (location_id, room_name, capacity, price_per_hour) VALUES 
-	(01, 'Grand Theater Room',1500, 500),
-	(02, 'Outdoor Courtyard',10000, 2000),
-	(03, 'Stage 1', 400, 200),
-	(01, 'Stage 1', 500, 250);
-	
-CREATE TABLE location 
-(
-	location_id INTEGER AUTO_INCREMENT PRIMARY KEY,
-	location_name VARCHAR(255)
-) ENGINE=Innodb DEFAULT CHARSET=utf8;
+-- --------------------------------------------------------
 
-INSERT INTO location (location_name) VALUES
-	('Opera House 1'),
-	('Opera House 2'),
-	('Opera House 3');
-	
-/* User requested_event: 	1. added approved (dummy variable 0 - not approved) 2. added image (string with image name) */
-	
-CREATE TABLE requested_event 
-(
-	reservation_id INTEGER AUTO_INCREMENT PRIMARY KEY,
-	description VARCHAR(255),
-	event_name VARCHAR(255),
-	category_id INTEGER,
-	event_capacity INTEGER,
-	location_id INTEGER,
-	ticket_price INTEGER,
-	user_id INTEGER,
-	event_start_date_time DATETIME,
-	event_end_date_time DATETIME,
-	ticket_start_date_time DATETIME,
-	ticket_end_date_time DATETIME,
-	approved bit,
-	image VARCHAR(255),
-	FOREIGN KEY (user_id) REFERENCES user(user_id),
-	FOREIGN KEY (location_id) REFERENCES location(location_id)
-	) ENGINE=Innodb DEFAULT CHARSET=utf8;
+--
+-- Table structure for table `category`
+--
 
-INSERT INTO requested_event ( description, event_name, category_id, event_capacity, ticket_price, location_id, user_id, event_start_date_time, event_end_date_time, ticket_start_date_time, ticket_end_date_time, approved, image ) VALUES 
-	('A beautiful performance by Enrique Iglesias.', 'Spanish Concert', 1, 150, 20, 1, 1, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', 0, 'image1.jpg'),
-	('British Popstar Performs.', 'Robbie Williams', 2, 8000, 50, 2, 1, '2017-11-29 21:00:00', '2017-11-30 01:00:00', '2017-10-29 22:00:00', '2017-11-29 20:00:00', 1, 'image2.jpg'),
-	('Russian Ballet Dancers.', 'Ballet', 1, 425, 20, 1, 2, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', 0, 'image3.jpg');
+CREATE TABLE `category` (
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `category`
+--
 
+INSERT INTO `category` (`category_id`, `category_name`) VALUES
+(1, 'Indoor Concert'),
+(2, 'Outdoor Concert'),
+(3, 'Ballet'),
+(4, 'Theater');
 
-CREATE TABLE ticket 
-(
-	ticket_id INTEGER AUTO_INCREMENT PRIMARY KEY,
-	user_id INTEGER,
-	event_id INTEGER,
-	FOREIGN KEY (user_id) REFERENCES user(user_id),
-	FOREIGN KEY (event_id) REFERENCES requested_event(reservation_id)	
-) ENGINE=Innodb DEFAULT CHARSET=utf8;
-INSERT INTO ticket (user_id, event_id) VALUES 
-(03, 1),
-(03, 1),
-(04, 1),
-(03, 2);
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `feedback`
+--
 
-CREATE TABLE feedback 
-(
-	ticket_id INTEGER PRIMARY KEY,
-	title_of_description VARCHAR(255),
-	description VARCHAR(255),
-	rating INTEGER(1),
-	FOREIGN KEY (ticket_id) REFERENCES ticket(ticket_id)
-) ENGINE=Innodb DEFAULT CHARSET=utf8;
+CREATE TABLE `feedback` (
+  `ticket_id` int(11) NOT NULL,
+  `title_of_description` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `rating` int(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO feedback (ticket_id, title_of_description, description, rating) VALUES
-	(1, 'Never Again', 'Worst experience ever, the price was too high, the service was awful.',1),
-	(4, 'Magnificent', 'The show was amazing!', 5);
+--
+-- Dumping data for table `feedback`
+--
 
+INSERT INTO `feedback` (`ticket_id`, `title_of_description`, `description`, `rating`) VALUES
+(1, 'Never Again', 'Worst experience ever, the price was too high, the service was awful.', 1),
+(4, 'Magnificent', 'The show was amazing!', 5);
 
+-- --------------------------------------------------------
 
-CREATE TABLE trigger_alert 
-(
-	event_id INTEGER,
-	user_id INTEGER,
-	alert_time DATE,
-	PRIMARY KEY(event_id,user_id)
-) ENGINE=Innodb DEFAULT CHARSET=utf8;
+--
+-- Table structure for table `location`
+--
 
-INSERT INTO trigger_alert (event_id, user_id, alert_time) VALUES
-	(01, 03, '2017-11-23 12:00:00'),
-	(02, 04, '2017-11-24 13:00:00');
+CREATE TABLE `location` (
+  `location_id` int(11) NOT NULL,
+  `location_name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `location`
+--
 
-CREATE TABLE category 
-(
-	category_id INTEGER AUTO_INCREMENT PRIMARY KEY,
-	category_name VARCHAR(255)
-) ENGINE=Innodb DEFAULT CHARSET=utf8;
+INSERT INTO `location` (`location_id`, `location_name`) VALUES
+(1, 'Opera House 1'),
+(2, 'Opera House 2'),
+(3, 'Opera House 3');
 
-INSERT INTO category (category_name) VALUES
-	('Indoor Concert'),
-	('Outdoor Concert'),
-	('Ballet'),
-	('Theater');
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `requested_event`
+--
 
-CREATE TABLE room_category (
-	room_id INTEGER,
-	category_id INTEGER,
-	FOREIGN KEY (category_id) REFERENCES category(category_id),
-	FOREIGN KEY (room_id) REFERENCES room(room_id)
-) ENGINE=Innodb DEFAULT CHARSET=utf8;
+CREATE TABLE `requested_event` (
+  `reservation_id` int(11) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `event_name` varchar(255) DEFAULT NULL,
+  `check_list` varchar(255) DEFAULT NULL,
+  `event_capacity` int(11) DEFAULT NULL,
+  `location_id` int(11) DEFAULT NULL,
+  `ticket_price` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `event_start_date_time` datetime DEFAULT NULL,
+  `event_end_date_time` datetime DEFAULT NULL,
+  `ticket_start_date_time` datetime DEFAULT NULL,
+  `ticket_end_date_time` datetime DEFAULT NULL,
+  `approved` bit(1) DEFAULT 0,
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO room_category (room_id, category_id) VALUES 
-	(1,1),
-	(1,3),
-	(1,4),
-	(2,3),
-	(3,3),
-	(3,4);
+--
+-- Dumping data for table `requested_event`
+--
 
-/* Admin table: removed level field */
-CREATE TABLE administrator 
-(
-	administrator_id INTEGER AUTO_INCREMENT PRIMARY KEY,
-	first_name VARCHAR(255),
-	last_name VARCHAR(255),
-	username VARCHAR(255),
-	password VARCHAR(255)
-) ENGINE=Innodb DEFAULT CHARSET=utf8;
+INSERT INTO `requested_event` (`reservation_id`, `description`, `event_name`, `check_list`, `event_capacity`, `location_id`, `ticket_price`, `user_id`, `event_start_date_time`, `event_end_date_time`, `ticket_start_date_time`, `ticket_end_date_time`, `approved`, `image`) VALUES
+(1, 'A beautiful performance by Enrique Iglesias.', 'Spanish Concert', 1, 150, 1, 20, 1, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', b'0', 'image1.jpg'),
+(2, 'British Popstar Performs.', 'Robbie Williams', 2, 8000, 2, 50, 1, '2017-11-29 21:00:00', '2017-11-30 01:00:00', '2017-10-29 22:00:00', '2017-11-29 20:00:00', b'1', 'image2.jpg'),
+(3, 'Russian Ballet Dancers.', 'Ballet', 1, 425, 1, 20, 2, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', b'0', 'image3.jpg');
 
-INSERT INTO administrator (first_name, last_name, username, password) VALUES
-	('Michael', 'Smith', 'Msmith87', 'Michael'),
-	('John', 'Smith', 'Jsmith99', 'John'),
-	('David', 'Smith', 'Dsmith02', 'David');
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room`
+--
+
+CREATE TABLE `room` (
+  `room_id` int(11) NOT NULL,
+  `location_id` int(11) DEFAULT NULL,
+  `room_name` varchar(255) DEFAULT NULL,
+  `capacity` int(11) DEFAULT NULL,
+  `price_per_hour` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`room_id`, `location_id`, `room_name`, `capacity`, `price_per_hour`) VALUES
+(1, 1, 'Grand Theater Room', 1500, 500),
+(2, 2, 'Outdoor Courtyard', 10000, 2000),
+(3, 3, 'Stage 1', 400, 200),
+(4, 1, 'Stage 1', 500, 250);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_category`
+--
+
+CREATE TABLE `room_category` (
+  `room_id` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `room_category`
+--
+
+INSERT INTO `room_category` (`room_id`, `category_id`) VALUES
+(1, 1),
+(1, 3),
+(1, 4),
+(2, 3),
+(3, 3),
+(3, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ticket`
+--
+
+CREATE TABLE `ticket` (
+  `ticket_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `event_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ticket`
+--
+
+INSERT INTO `ticket` (`ticket_id`, `user_id`, `event_id`) VALUES
+(1, 3, 1),
+(2, 3, 1),
+(3, 4, 1),
+(4, 3, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trigger_alert`
+--
+
+CREATE TABLE `trigger_alert` (
+  `event_id` int(11) NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `alert_time` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `trigger_alert`
+--
+
+INSERT INTO `trigger_alert` (`event_id`, `user_id`, `alert_time`) VALUES
+(1, 3, '2017-11-23'),
+(2, 4, '2017-11-24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `username` varchar(30) DEFAULT NULL,
+  `password` varchar(30) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `mobile_number` varchar(12) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `password`, `first_name`, `last_name`, `email`, `address`, `mobile_number`) VALUES
+(1, 'ahmedsalem', 'ahmed', 'Ahmed', 'Salem', 'ahmedhsalem@hotmail.com', 'NW1 5PL', '07442156678'),
+(2, 'waynehsu', 'wayne', 'Wayne', 'Hsu', 'wayne.hsu.15@ucl.ac.uk', 'W1T 5HB', '071824728473'),
+(3, 'beaegido', 'bea', 'Bea', 'Egido', 'beatriz.egido.15@ucl.ac.uk', 'NW8 8UW', '07234724378'),
+(4, 'jameswang', 'james', 'James', 'Wang', 'james.wang@doesntexist.ac.uk', 'n/a', '0700000000'),
+(5, 'beita', 'beita', 'Bea', 'Maestre', 'be@hotmail.com', '-', '-'),
+(6, 'd', '2', 'h', 'h', 'h@d.com', '', 'h'),
+(7, 'bea', 'hola', 'maestre', 'mea', 'user@hot.com', '', '677');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `administrator`
+--
+ALTER TABLE `administrator`
+  ADD PRIMARY KEY (`administrator_id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`ticket_id`);
+
+--
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`location_id`);
+
+--
+-- Indexes for table `requested_event`
+--
+ALTER TABLE `requested_event`
+  ADD PRIMARY KEY (`reservation_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `location_id` (`location_id`);
+
+--
+-- Indexes for table `room`
+--
+ALTER TABLE `room`
+  ADD PRIMARY KEY (`room_id`);
+
+--
+-- Indexes for table `room_category`
+--
+ALTER TABLE `room_category`
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `room_id` (`room_id`);
+
+--
+-- Indexes for table `ticket`
+--
+ALTER TABLE `ticket`
+  ADD PRIMARY KEY (`ticket_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `event_id` (`event_id`);
+
+--
+-- Indexes for table `trigger_alert`
+--
+ALTER TABLE `trigger_alert`
+  ADD PRIMARY KEY (`event_id`,`user_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `administrator`
+--
+ALTER TABLE `administrator`
+  MODIFY `administrator_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `requested_event`
+--
+ALTER TABLE `requested_event`
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `room`
+--
+ALTER TABLE `room`
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `ticket`
+--
+ALTER TABLE `ticket`
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `ticket` (`ticket_id`);
+
+--
+-- Constraints for table `requested_event`
+--
+ALTER TABLE `requested_event`
+  ADD CONSTRAINT `requested_event_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `requested_event_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`);
+
+--
+-- Constraints for table `room_category`
+--
+ALTER TABLE `room_category`
+  ADD CONSTRAINT `room_category_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
+  ADD CONSTRAINT `room_category_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`);
+
+--
+-- Constraints for table `ticket`
+--
+ALTER TABLE `ticket`
+  ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `requested_event` (`reservation_id`);
