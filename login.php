@@ -10,7 +10,6 @@ if(isset($_GET['username'])) {
 $username = test_input($_GET['username']);
 $password = test_input($_GET['password']);
 // Connect to the database
-$connection = connect();
 
 //SQL to find the email
 $sql = "SELECT * FROM user WHERE username='$username' AND password='$password' ";

@@ -1,16 +1,13 @@
 <?php
 
 require 'dbconnect.php';
+require 'testinput.php';
 session_start();
-$username = "";
-$message = "";
+$username = $message = $signin = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 if(isset($_GET['username'])) { 
 $username = test_input($_GET['username']);
-
-// Connect to the database
-$connection = connect();
 
 //SQL to find the username
 $sql = "SELECT * FROM user WHERE username='$username'";
@@ -35,6 +32,7 @@ if (mysqli_num_rows($result) > 0) {
 		$sql = "INSERT INTO user ( first_name, last_name, username, password, email, address, mobile_number ) VALUES 
 		( '$firstname', '$lastname', '$username', '$password', '$email', '$address', '$mobile' )";
 		mysqli_query($connection, $sql);
+		$signin = "Now that you've registered, please sign in to access your account!";
 		header("Location: home_page.php");
 		}
 mysqli_free_result($result);
@@ -42,10 +40,4 @@ mysqli_close($connection);
 }
 }    
 
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
 ?>

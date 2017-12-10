@@ -22,10 +22,10 @@
 <body>
 	<div id="wrapper">
 	<div id="banner">
+	<a href="home_page.php">
 	<img src="logo.png"
 	width="20%" height="70px"
-	align="left"> 
-	<p align="center"> Title</p>
+	align="left"></a> 
 	</div>
 	<div id="menuTop">
 		<header id="page_header">
@@ -43,7 +43,8 @@
 		<label for="search" id="label">Search:</label>
 	</div>
 	<div id="columnRight">
-	Welcome <?php echo " $login_session"; ?>
+	Welcome, <?php echo " $login_session"; ?> </br>
+	<a href="logout.php">Logout</a>
 	</div>
 	<div id="content">
 	<div class="innercontent">

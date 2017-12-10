@@ -42,14 +42,16 @@
     color: red;
     }
   </style>
-  <?php include 'login.php'; ?>
+  <?php include 'login.php';
+  		include 'register.php'; ?>
 </head>
 <body>
 <img src="logo.png" width="20%" height="70px" id="logo">
+<?php echo $message;?>
 <div id="wrapper">
 	<div id="signinBox">
 		<label for="username"><h3 align="center">Sign In</h3>
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="GET">
+		<form name="form1" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="GET" onSubmit="return checkForm(this)">
 		<label for="username" class="label">Username:</label>
 		<input type="text" id="username" name="username"/> 
 		<br/>
@@ -70,11 +72,6 @@
 		 width: 70%; margin-right: 13%"/>
 	</div>
 </div>
-<script>
-		  function removeWarning() {
-			document.getElementById("usernameError").innerHTML = "";
-			}
-			document.getElementById("username").onkeyup = removeWarning;
-</script>
+<script src = "email_submission.js"></script>
 </body>
 </html>

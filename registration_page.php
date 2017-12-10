@@ -36,13 +36,14 @@
   <?php include "register.php";?>
 </head>
 <body>
-<img src="logo.png" width="20%" height="70px" id="logo">
+<a href="opening_page.php">
+<img src="logo.png" width="20%" height="70px" id="logo"></a>
 	<div id="registrationBox">
 		<h2 align="center">Register A New User</h2>
 		
 		<form name="form1" method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onSubmit="return checkForm(this)" >
 		
-			<!-- Adding Value to inputs from the PHP form because if not every time, the User has to write everything from the beginning -->
+			<!-- Adding Value to inputs from the PHP form because if not every time, the User has to write everything from the beginning --!>
 			
 			<label for="username" class="label">Username:</label>
 			<input type="text" id="username" name="username" value ="<?php if(isset($_GET['username'])) echo htmlspecialchars($_GET['username']); ?>"/>
