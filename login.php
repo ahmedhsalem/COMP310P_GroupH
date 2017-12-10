@@ -2,15 +2,13 @@
 
 require 'dbconnect.php';
 session_start();
-$username = "";
-$message = "";
-
+$username = $error = $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 if(isset($_GET['username'])) { 
 $username = test_input($_GET['username']);
 $password = test_input($_GET['password']);
 // Connect to the database
-
+$connection = connect();
 //SQL to find the email
 $sql = "SELECT * FROM user WHERE username='$username' AND password='$password' ";
 
@@ -22,7 +20,7 @@ $row = mysqli_fetch_array($result);
 
 //If the user doesn't exist there will be no rows in the $result
 if (mysqli_num_rows($result) == 0) {
-    $message = "Username and password combination not valid";
+    $error = "Username and password combination not valid";
 }  else {	
 		$_SESSION['username']=$username;
 		header("Location: home_page.php");

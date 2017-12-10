@@ -42,8 +42,7 @@
     color: red;
     }
   </style>
-  <?php include 'login.php';
-  		include 'register.php'; ?>
+  <?php include 'login.php';?>
 </head>
 <body>
 <img src="logo.png" width="20%" height="70px" id="logo">
@@ -55,7 +54,7 @@
 		<label for="username" class="label">Username:</label>
 		<input type="text" id="username" name="username"/> 
 		<br/>
-		<p class=error id="usernameError"><?php echo $message;?></p>
+		<p class=error id="usernameError"><?php echo $error;?></p>
 		
 		<label for="password" class="label">Password:</label>
 		<input type="password" id="password" name="password"/> <br/><br/>
