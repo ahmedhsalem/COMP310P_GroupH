@@ -1,48 +1,8 @@
 <!DOCTYPE html>
 <head>
   <title>Opening Page</title>
-  <style>
-  #signinBox, #registerBox {
-  		width: 300px;
-  		height: 200px;
-  		border: 1px solid black;
-  		padding: 15px;
-  		float: left;
-  }
-  #signinBox {
-    	border-top-left-radius: 40px;
-  		border-bottom-left-radius: 40px;
-  	}
-  #registerBox {
-  		border-top-right-radius: 40px;
-  		border-bottom-right-radius: 40px;
-  }
-  #logo {
-  		display: block;
-    	margin: auto;
-    	margin-top: 10%;
-  }
-
-    input {
-    	float: right;
-    	width: 60%;
-    	resize: none;
-    }
-    #wrapper {
-      	white-space: nowrap;
-		width:50%;
-		margin: auto;
-}
-	a {
-	text-decoration: none;
-	color: black;
-	}
-	.error {
-    float: center;
-    color: red;
-    }
-  </style>
-  <?php include 'login.php';?>
+  	<link href="opening_page.css" rel="stylesheet" type="text/css"/>
+    <?php require_once 'login.php';?>
 </head>
 <body>
 <img src="logo.png" width="20%" height="70px" id="logo">

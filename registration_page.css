@@ -1,0 +1,28 @@
+  #registrationBox {
+   		white-space: nowrap;
+  		border: 1px solid black;
+  		margin: auto;
+  		border-radius: 40px;
+  		padding: 50px;
+  		padding-top: 10px;
+  		width: 450px;
+  }
+  #logo {
+  		display: block;
+    	margin: auto;
+    	margin-top: 2%;
+  }
+
+    input, textarea {
+    	float: right;
+    	width: 200px;
+    	resize: none;
+    	margin-right: 50px;
+    }
+    .label {
+    float: left;
+    }
+    .error {
+    float: center;
+    color: red;
+    }

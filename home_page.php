@@ -44,7 +44,8 @@
 	</div>
 	<div id="columnRight">
 	Welcome, <?php echo " $login_session"; ?> </br>
-	<a href="logout.php">Logout</a>
+	<a href="settings_page.php">Settings</a></br>
+	<a href="logout.php"><button type="button">Logout</button></a>
 	</div>
 	<div id="content">
 	<div class="innercontent">

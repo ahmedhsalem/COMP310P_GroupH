@@ -3,14 +3,14 @@ function checkForm(form){
 		var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 		var usernameformat = /^[\w ]+$/;
 		var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/ 
-		var username = document.forms["form1"]["username"].value;
-		var firstname = document.forms["form1"]["firstname"].value;
-		var lastname = document.forms["form1"]["lastname"].value;
-		var email = document.forms["form1"]["email"].value;
+		var username = document.getElementById("username").value;
+		var firstname = document.getElementById("firstname").value;
+		var lastname = document.getElementById("lastname").value;
+		var email = document.getElementById("email").value;
 		var address = document.getElementById("address").value;
-		var mobile = document.forms["form1"]["mobile"].value;
-		var password = document.forms["form1"]["password"].value;
-		var confirmpassword = document.forms["form1"]["confirmpassword"].value;
+		var mobile = document.getElementById("mobile").value;
+		var password = document.getElementById("password").value;
+		var confirmpassword = document.getElementById("confirmpassword").value;
 		var submit = true;
 		
 //Code Adapted from Stack Overflow Answer: https://stackoverflow.com/questions/32708271/individual-error-messages-for-empty-form-fields-using-javascript

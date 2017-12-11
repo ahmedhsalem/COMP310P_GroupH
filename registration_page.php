@@ -1,38 +1,7 @@
 <!DOCTYPE html>
 <head>
   <title>Registration</title>
-  <style>
-  #registrationBox {
-   		white-space: nowrap;
-  		border: 1px solid black;
-  		margin: auto;
-  		border-radius: 40px;
-  		padding: 50px;
-  		padding-top: 10px;
-  		width: 450px;
-  }
-  #logo {
-  		display: block;
-    	margin: auto;
-    	margin-top: 2%;
-  }
-
-    input, textarea {
-    	float: right;
-    	width: 200px;
-    	resize: none;
-    	margin-right: 50px;
-    }
-    .label {
-    float: left;
-    }
-    .error {
-    float: center;
-    color: red;
-    }
-
-
-  </style>
+  <link href="registration_page.css" rel="stylesheet" type="text/css"/>
   <?php include "register.php";?>
 </head>
 <body>
@@ -48,7 +17,7 @@
 			<label for="username" class="label">Username:</label>
 			<input type="text" id="username" name="username" value ="<?php if(isset($_GET['username'])) echo htmlspecialchars($_GET['username']); ?>"/>
 			<br/>
-			<p class=error id="usernameError"><?php echo $message;?></p>
+			<p class=error id="usernameError"><?php echo $error;?></p>
 			<br/>
 			
 			<label for="firstname" class="label">First Name:</label>

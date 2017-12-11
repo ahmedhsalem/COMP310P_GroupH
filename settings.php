@@ -1,25 +1,16 @@
 <?php
-
+require_once 'session.php';
 require_once 'dbconnect.php';
-require_once 'testinput.php';
+require 'testinput.php';
 $username = $message = $error = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 if(isset($_GET['username'])) { 
 $username = test_input($_GET['username']);
-
-// Connect to the database
 $connection = connect();
-
-//SQL to find the username
 $sql = "SELECT * FROM user WHERE username='$username'";
-
-//Execute query and get the result
 $result = mysqli_query($connection, $sql);
-
-//Get the first row of the result as an array
 $row = mysqli_fetch_array($result);
 
-//If the user doesn't exist there will be no rows in the $result
 if (mysqli_num_rows($result) > 0) {
     $error = "Please select a different username, username is already taken";
 }  else {		

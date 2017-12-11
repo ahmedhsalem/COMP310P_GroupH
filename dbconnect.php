@@ -15,7 +15,6 @@ function connect() {
         exit;
     }
     
-
     return $connection;
 }
 

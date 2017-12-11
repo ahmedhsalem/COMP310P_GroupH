@@ -39,12 +39,13 @@
 }
 	#content {
 		width:75%;
-		height: 438px;
+		height: 538px;
 		background-color: #D3D3D3;		
 
 }
 	.innercontent {
 		padding: 20px;
+		white-space: nowrap;
 
 }
 	#columnRight {

@@ -1,6 +1,7 @@
 <?php
 
-require 'dbconnect.php';
+require_once 'dbconnect.php';
+require_once 'testinput.php';
 session_start();
 $username = $error = $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -19,7 +20,7 @@ $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_array($result);
 
 //If the user doesn't exist there will be no rows in the $result
-if (mysqli_num_rows($result) == 0) {
+if (mysqli_num_rows($result) === 0) {
     $error = "Username and password combination not valid";
 }  else {	
 		$_SESSION['username']=$username;
@@ -29,11 +30,4 @@ mysqli_free_result($result);
 mysqli_close($connection);
 }
 }    
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
 ?>
