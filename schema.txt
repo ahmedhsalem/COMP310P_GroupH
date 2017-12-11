@@ -91,7 +91,7 @@ INSERT INTO `location` (`location_id`, `location_name`) VALUES
 --
 
 CREATE TABLE `requested_event` (
-  `reservation_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `event_name` varchar(255) DEFAULT NULL,
   `category_check_list` varchar(255) DEFAULT NULL,
@@ -103,6 +103,7 @@ CREATE TABLE `requested_event` (
   `event_end_date_time` datetime DEFAULT NULL,
   `ticket_start_date_time` datetime DEFAULT NULL,
   `ticket_end_date_time` datetime DEFAULT NULL,
+  `room_id` int(11) DEFAULT NULL,
   `approved` bit(1) DEFAULT 0,
   `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -111,10 +112,10 @@ CREATE TABLE `requested_event` (
 -- Dumping data for table `requested_event`
 --
 
-INSERT INTO `requested_event` (`reservation_id`, `description`, `event_name`, `check_list`, `event_capacity`, `location_id`, `ticket_price`, `user_id`, `event_start_date_time`, `event_end_date_time`, `ticket_start_date_time`, `ticket_end_date_time`, `approved`, `image`) VALUES
-(1, 'A beautiful performance by Enrique Iglesias.', 'Spanish Concert', 1, 150, 1, 20, 1, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', b'0', 'image1.jpg'),
-(2, 'British Popstar Performs.', 'Robbie Williams', 2, 8000, 2, 50, 1, '2017-11-29 21:00:00', '2017-11-30 01:00:00', '2017-10-29 22:00:00', '2017-11-29 20:00:00', b'1', 'image2.jpg'),
-(3, 'Russian Ballet Dancers.', 'Ballet', 1, 425, 1, 20, 2, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', b'0', 'image3.jpg');
+INSERT INTO `requested_event` (`event_id`, `description`, `event_name`, `category_check_list`, `event_capacity`, `location_id`, `ticket_price`, `user_id`, `event_start_date_time`, `event_end_date_time`, `ticket_start_date_time`, `ticket_end_date_time`, `room_id`, `approved`, `image`) VALUES
+(1, 'A beautiful performance by Enrique Iglesias', 'Spanish Concert', 1, 150, 1, 20, 1, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', 4, 0, 'image1.jpg'),
+(2, 'British Popstar Performs.', 'Robbie Williams', 2, 8000, 2, 50, 1, '2017-11-29 21:00:00', '2017-11-30 01:00:00', '2017-10-29 22:00:00', '2017-11-29 20:00:00', 3,1, 'image2.jpg'),
+(3, 'Russian Ballet Dancers.', 'Ballet', 1, 425, 1, 20, 2, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', 2, 0, 'image3.jpg');
 
 -- --------------------------------------------------------
 
@@ -267,7 +268,7 @@ ALTER TABLE `location`
 -- Indexes for table `requested_event`
 --
 ALTER TABLE `requested_event`
-  ADD PRIMARY KEY (`reservation_id`),
+  ADD PRIMARY KEY (`event_id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `location_id` (`location_id`);
 
@@ -327,7 +328,7 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `requested_event`
 --
 ALTER TABLE `requested_event`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `room`
 --
@@ -372,4 +373,4 @@ ALTER TABLE `room_category`
 --
 ALTER TABLE `ticket`
   ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `requested_event` (`reservation_id`);
+  ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `requested_event` (`event_id`);
