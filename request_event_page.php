@@ -93,19 +93,6 @@ input, textarea {
             <br>
             
             <div>
-                <select name="room">
-                <?php 
-                $sql = mysqli_query($connection, "SELECT room FROM WHERE capacity >= ");
-                while ($row = $sql->fetch_assoc()){
-                echo "<option value=\"owner1\">" . $row['username'] . "</option>";
-                }
-                ?>
-                </select>
-            </div>    
-            <script>
-                value = getElementById
-            </script>
-            <div>
                 <label for="ticket_price" class="label"><b>Ticket Price:</b></label>
                 <div>
                     <input type="text" id="price" placeholder="Price of 1 ticket" name="ticket" required>
