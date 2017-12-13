@@ -1,34 +1,48 @@
 <?php
 require_once 'session.php';
 require_once 'dbconnect.php';
-require 'testinput.php';
-$username = $message = $error = "";
+require_once 'testinput.php';
+$email = $changed = $email = $password = $address = $mobile = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-if(isset($_GET['username'])) { 
-$username = test_input($_GET['username']);
-$connection = connect();
-$sql = "SELECT * FROM user WHERE username='$username'";
-$result = mysqli_query($connection, $sql);
-$row = mysqli_fetch_array($result);
+if(!empty($_GET['email'])) { 
+$email = test_input($_GET['email']);
+$connection = connect();		
+$sql = "UPDATE user
+		SET email = '$email'
+		WHERE user_id = '$userid_session' ";
+mysqli_query($connection, $sql);
+$changed = "Changed successfully!"; }
 
-if (mysqli_num_rows($result) > 0) {
-    $error = "Please select a different username, username is already taken";
-}  else {		
-		$password = test_input($_GET['password']);
-		$firstname = test_input($_GET['firstname']);
-		$lastname = test_input($_GET['lastname']);
-		$email = test_input($_GET['email']);
-		$address = test_input($_GET['address']);
-		$mobile = test_input($_GET['mobile']);
-		
-		$sql = "INSERT INTO user ( first_name, last_name, username, password, email, address, mobile_number ) VALUES 
-		( '$firstname', '$lastname', '$username', '$password', '$email', '$address', '$mobile' )";
-		mysqli_query($connection, $sql);
-		header("Location: opening_page.php");
-		}
+if(!empty($_GET['password'])) { 
+$password = test_input($_GET['password']);
+$connection = connect();		
+$sql = "UPDATE user
+		SET password = '$password'
+		WHERE user_id = '$userid_session' ";
+mysqli_query($connection, $sql);
+$changed = "Changed successfully!";}
+
+if(!empty($_GET['address'])) { 
+$address = test_input($_GET['address']);
+$connection = connect();		
+$sql = "UPDATE user
+		SET address = '$address'
+		WHERE user_id = '$userid_session' ";
+mysqli_query($connection, $sql);
+$changed = "Changed successfully!";}
+
+if(!empty($_GET['mobile'])) { 
+$mobile = test_input($_GET['mobile']);
+$connection = connect();		
+$sql = "UPDATE user
+		SET mobile_number = '$mobile'
+		WHERE user_id = '$userid_session' ";
+mysqli_query($connection, $sql);
+$changed = "Changed successfully!";
+}
 mysqli_free_result($result);
 mysqli_close($connection);
 }
-}       
+     
 
 ?>

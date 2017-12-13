@@ -28,7 +28,8 @@ function checkForm(form){
         firstnameError = "Please enter your first name";
         document.getElementById("firstnameError").innerHTML = firstnameError;
         submit = false;
-    } else if(!usernameformat.test(form.firstname.value))
+    } 
+    else if(!usernameformat.test(form.firstname.value))
 		{  
 			document.getElementById("firstnameError").innerHTML = "No symbols please!";  
 			submit = false;  
@@ -54,7 +55,12 @@ function checkForm(form){
         telephoneError = "Please enter your telephone";
         document.getElementById("mobileError").innerHTML = telephoneError;
         submit = false;
-    } 
+    }
+    if (!phoneno.test(mobile)) {
+    	document.getElementById("mobileError").innerHTML = "Please enter a Valid Phone Number";
+			submit = false;
+    }
+    	
     
     if (password == null || password == "") {
         passwordError = "Please enter a Password";
@@ -71,10 +77,6 @@ function checkForm(form){
 			document.getElementById("confirmpasswordError").innerHTML = "Passwords do not match";
 			submit = false;  
 		}
-
-	
-	
-
 
 	return submit;
 	

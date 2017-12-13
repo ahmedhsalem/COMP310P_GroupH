@@ -1,4 +1,6 @@
-<?php include "events.php";?>
+<?php include_once "events.php";
+	  include_once "session.php"; ?>
+
 <!DOCTYPE html>
 <head>
   <title>Request to Host</title>
@@ -50,6 +52,8 @@
 	</div>
 	<div id="columnRight">
 	Welcome, <?php echo " $login_session"; ?> </br>
+	<a href="myEvent.php">My Events</a></br>
+	<a href="settings_page.php">Settings</a></br>
 	<a href="logout.php"><button type="button">Logout</button></a>
 	</div>
 	<div id="content">

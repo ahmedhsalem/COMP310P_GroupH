@@ -5,7 +5,7 @@ function checkForm(form){
 		
 //Checks Input
 		if (username == null || username == "") {
-        document.getElementById("usernameError").innerHTML = "hello";
+        document.getElementById("usernameError").innerHTML = "hey";
         submit = false;
     } 
 

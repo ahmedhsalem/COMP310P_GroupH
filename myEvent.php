@@ -8,33 +8,34 @@
 </head>
 <style>
     #columnEventAttended {
-    width:25%;
+    width:40%;
     height: 389px;
     border-style: solid;
     float: right;
-    border-width: 0px 0px 0px 1px;
+    border-width: 1px 1px 1px 1px;
     float: top;
 
 }
 
 #columnEventHost {
-    width: 50%;
+    width: 60%;
     height: 194px;
-    border-style: none;
-    border-width: 0px 0px 1px 1px;
+    border-style: solid;
+    border-width: 1px 0px 1px 1px;
     float: top;
     
 }
 
 #columnEventAttending {
-    width: 50%;
+    width: 60%;
     height: 194px;
-    border-style: none;
+    border-style: solid;
     border-width: 0px 0px 1px 1px;
     float: top;
 }
-#innercontent {
-    padding: 0px;
+.title {
+	font-size: 1.2em;
+	font-weight: bold;
 }
 </style>
 <body>
@@ -65,7 +66,8 @@
 	</div>
 	<div id="columnRight">
 	Welcome, <?php echo " $login_session"; ?> </br>
-        <a href="myEvent.php">My Events</a></br>
+	<a href="myEvent.php">My Events</a></br>
+	<a href="settings_page.php">Settings</a></br>
 	<a href="logout.php"><button type="button">Logout</button></a>
 	</div>
 	<div id="content">
@@ -74,13 +76,13 @@
                 <h2>My Events</h2>
             </div>
             <div id="columnEventAttended">
-                <p2>Events I've Attended:<br></p2>
+                <p1 class="title"> Events I've Attended:</p1></br>
                 <?php  
                     echo $attendedList;
                 ?>
             </div>
             <div id="columnEventHost">
-                <p3>Events I'm Hosting:<br></p3>
+                <p1 class="title">Events I'm Hosting:</p1></br>
                 
                 <?php  
                     if (mysqli_num_rows($result3) > 0) {
@@ -99,7 +101,7 @@
             </div>
 
             <div id="columnEventAttending">
-                <p4>Events I'm Attending:<br></p4>
+                <p1 class="title">Events I'm Attending:</p1></br>
                 <?php  
                     echo $attendingList;
                 ?>

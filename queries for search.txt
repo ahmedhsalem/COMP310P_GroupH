@@ -1,0 +1,11 @@
+SELECT * FROM requested_event
+JOIN location 
+JOIN room ON location.location_id=room.location_id
+JOIN room_category ON room.room_id=room_category.room_id
+
+
+SELECT event_name, description FROM requested_event WHERE MATCH(description, event_name) AGAINST ('Spanish');
+
+ALTER TABLE requested_event ADD FULLTEXT (description);
+ALTER TABLE requested_event ADD FULLTEXT (event_name);
+ALTER TABLE category ADD FULLTEXT (category_name);
