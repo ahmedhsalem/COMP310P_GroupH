@@ -68,25 +68,16 @@
                 <?php
                
                 if(date('Y-m-d h:i:s')>$ticketEndTime || $totalTicket-$soldTicket==0){
-                   echo "Sorry the ticket is unavailable.";
+                   echo "<br><br><br>Sorry the ticket is unavailable.";
                 } else {
                     
                     $SUBMIT = "SUBMIT";
-                    echo "<a href='ticketConfirmation.php'>".$SUBMIT."</a></br>";
+                    echo "<br><br><a href='ticketConfirmation.php'>".$SUBMIT."</a></br>";
                     
                 }
                 
                 ?>
                
-                
-                
-                
-                
-                <?php
-//                $SUBMIT = "SUBMIT";
-//                echo "<a href='ticketConfirmation.php'>".$SUBMIT."</a></br>";
-                ?> 
-                
             </div>
 	</div>
 	</div>

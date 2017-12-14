@@ -23,6 +23,15 @@
       $eventName = $row2['event_name'];
       $ticketEndTime = $row2['ticket_end_date_time'];
       
+      $query6=("SELECT * FROM category 
+                JOIN requested_event ON requested_event.category_id=category.category_id
+                WHERE requested_event.event_id = $rowid"
+                );
+      $result6=mysqli_query($connection, $query6);
+      $row6 = mysqli_fetch_array($result6);
+      $eventCategory = $row6['category_name']; 
+
+      
       $query3=("SELECT COUNT(*) as total FROM ticket WHERE event_id = $rowid");
       $result3 = mysqli_query($connection, $query3);
       $row3 = mysqli_fetch_array($result3);
@@ -44,7 +53,7 @@
                 JOIN requested_event ON requested_event.event_id=ticket.event_id
                 WHERE requested_event.event_id = $rowid");
       $result5 = mysqli_query($connection, $query5);
-      $row5 = mysqli_fetch_array($result5);
+//      $row5 = mysqli_fetch_array($result5);
 //      $firstName = $row5['first_name'];
 //      $lastName = $row5['last_name'];
       

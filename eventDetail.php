@@ -59,7 +59,9 @@ table, th, td {
                 <h2><?php echo $eventName;?></h2>
             </div>
             <div id="contentColumn">
-                <p1>Total Tickets: </p1>
+                <p6>Event Category: </p6>
+                <?php echo $eventCategory; ?>
+                <br><p1>Total Tickets: </p1>
                 <?php echo $totalTicket; ?>
                 <br><p2>Ticket Price: </p2>
                 <?php echo "£$ticketPrice";?>
@@ -84,18 +86,18 @@ table, th, td {
                 <?php
             if ($result4->num_rows > 0) {
                 
-    echo "<table><tr><th>User</th><th>Rating</th><th>Title</th><th>Description</th></tr>";
+                echo "<table><tr><th>User</th><th>Rating</th><th>Title</th><th>Description</th></tr>";
     // output data of each row
-    while($row4 = $result4->fetch_assoc()  ) {
+                while($row4 = $result4->fetch_assoc()) {
         
-        echo "<tr><td>" . $row4['first_name']. "</td><td>" . $rating= $row4['rating']. "</td><td>" . $row4['title_of_description']. "</td><td>" . $row4['description']. "</td></tr>";
-    }
-    echo "</table>";
-} else {
-    echo "0 results";
-} ?>
-                
-                
+                    $row5 = $result5->fetch_assoc();
+        
+                    echo "<tr><td>" . $row5['first_name']. "</td><td>" . $rating= $row4['rating']. "</td><td>" . $row4['title_of_description']. "</td><td>" . $row4['description']. "</td></tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "0 results";
+            } ?>
                 
             </div>
             
