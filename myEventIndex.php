@@ -16,7 +16,7 @@ $query1=("SELECT DISTINCT *, first_name FROM `requested_event`
 //      $row2=mysqli_fetch_array($result2);
       
       //event hosting
-      $query3=("SELECT * FROM requested_event WHERE requested_event.user_id = '$userid_session'");
+      $query3=("SELECT * FROM requested_event WHERE requested_event.user_id = '$userid_session' AND event_start_date_time > NOW()");
       $result3=mysqli_query($connection, $query3);
       
       if ($result1->num_rows > 0) {
