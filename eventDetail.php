@@ -129,7 +129,7 @@ height: 700px;
 							  <option value="2">2/5</option>
 							  <option value="3">3/5</option>
 							  <option value="4">4/5</option>
-							  <option value="6">5/5</option>
+							  <option value="5">5/5</option>
 						</select>
 					</td>
 					<td>

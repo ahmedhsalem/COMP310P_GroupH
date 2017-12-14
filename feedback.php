@@ -3,6 +3,7 @@ require_once 'dbconnect.php';
 require_once 'testinput.php';
 include_once 'session.php';
 include_once 'eventDetailIndex.php';
+require_once ('eventListIndex.php');
 $username = $message = $error = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 if(isset($_GET['submit'])) { 
