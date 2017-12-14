@@ -17,6 +17,9 @@
 	font-size: 1.2em;
 	font-weight: bold;
 }
+table, th, td {
+    border: 1px solid black;
+}
 </style>
 <body>
 	<div id="wrapper">
@@ -68,10 +71,9 @@
                 <?php echo $totalTicket-$soldTicket?>
                 <br><br><br>
                 <?php
-                $row1 = mysqli_fetch_assoc($result1);
-                $id=$row1['event_id'];
+                
                 $BUYTICKET = "BUY TICKET";
-                echo "<a href='ticket.php?id={$id}'>".$BUYTICKET."</a></br>";
+                echo "<a href='ticket.php?id={$rowid}'>".$BUYTICKET."</a></br>";
                 ?>        
                 
                
@@ -79,23 +81,21 @@
                 <br><br><br><br><br>
                 <p6>Rating & Comment</p6><br>
                 
-                <table>
-                    <tr>
-                        <th>User</th>
-                        <th>Rating</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                    </tr>
-                                       
-                    <?php //   while($row4 = mysqli_fetch_assoc($result3)) { ?>
-                            <tr>
-                                <td><?php echo $firstName."&nbsp".$lastName;?></td>
-                                <td><?php echo $rating."/5";?></td>
-                                <td><?php echo $reviewTitle;?></td>
-                                <td><?php echo $reviewDescription;?></td>
-                            </tr>
-                    <?php// }?>                  
-                </table>
+                <?php
+            if ($result4->num_rows > 0) {
+                
+    echo "<table><tr><th>User</th><th>Rating</th><th>Title</th><th>Description</th></tr>";
+    // output data of each row
+    while($row4 = $result4->fetch_assoc()  ) {
+        
+        echo "<tr><td>" . $row4['first_name']. "</td><td>" . $rating= $row4['rating']. "</td><td>" . $row4['title_of_description']. "</td><td>" . $row4['description']. "</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+} ?>
+                
+                
                 
             </div>
             

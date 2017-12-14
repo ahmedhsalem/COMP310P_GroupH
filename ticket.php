@@ -1,6 +1,6 @@
 <?php
       require_once('session.php');
-      require ('eventDetailIndex.php');
+      require_once ('eventDetailIndex.php');
       ob_start();
       require_once ('eventList.php');
       ob_end_clean();
@@ -63,11 +63,11 @@
                 <?php echo $totalTicket-$soldTicket;?>
                 <br><p4>Number of Tickets: </p4>
                 <br><p5>Time Left to Buy Tickets: </p5>
-                <?php require_once ('countDown.php'); ?>
+                <?php require_once ('countDownTimer.php'); ?>
                 
                 <?php
-//                echo date('Y-m-d h:i:sa');
-                if(date('Y-m-d h:i:sa')>$ticketEndTime || $totalTicket-$soldTicket==0){
+               
+                if(date('Y-m-d h:i:s')>$ticketEndTime || $totalTicket-$soldTicket==0){
                    echo "Sorry the ticket is unavailable.";
                 } else {
                     
