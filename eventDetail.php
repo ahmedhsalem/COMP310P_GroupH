@@ -5,7 +5,6 @@
       ob_end_clean();
       require_once('eventDetailIndex.php');
       require ('eventListIndex.php');
-
 ?>
 <!DOCTYPE html>
 <head>
@@ -17,8 +16,25 @@
 	font-size: 1.2em;
 	font-weight: bold;
 }
+#buy {
+	padding: 10px;
+	float: right;
+	display: block;
+	margin-right: 150px;
+	font-size: 1.05em;
+	}
 table, th, td {
     border: 1px solid black;
+}
+.entry, #address {
+    	float: right;
+    	width: 300px;
+    	resize: none;
+    	padding: 1px;
+
+    }
+#content {
+height: 700px;
 }
 </style>
 <body>
@@ -48,9 +64,9 @@ table, th, td {
 		</form>
 	</div>
 	<div id="columnRight">
-	Welcome, <?php echo " $login_session"; ?> </br>
-	<a href="myEvent.php">My Events</a></br>
-	<a href="settings_page.php">Settings</a></br>
+	Welcome, <?php echo " $login_session"; ?> <br/>
+	<a href="myEvent.php">My Events</a><br/>
+	<a href="settings_page.php">Settings</a><br/>
 	<a href="logout.php"><button type="button">Logout</button></a>
 	</div>
 	<div id="content">
@@ -63,8 +79,10 @@ table, th, td {
                 <?php echo $eventCategory; ?>
                 <br><p1>Total Tickets: </p1>
                 <?php echo $totalTicket; ?>
-                <br><p2>Ticket Price: </p2>
-                <?php echo "£$ticketPrice";?>
+                <br/><p2>Ticket Price: </p2>
+                <?php
+				echo "&pound; "; //preferred for HTML
+				echo $ticketPrice;?>
                 <br><p3>Date and Time: </p3>
                 <?php echo "$startDate&nbspto&nbsp$endDate" ?>
                 <br><p4>Event Description: </p4>
@@ -73,15 +91,13 @@ table, th, td {
                 <?php echo $totalTicket-$soldTicket?>
                 <br><br><br>
                 <?php
-                
-                $BUYTICKET = "BUY TICKET";
-                echo "<a href='ticket.php?id={$rowid}'>".$BUYTICKET."</a></br>";
-                ?>        
-                
+                $BUYTICKET = "BUY TICKET"; ?>
+                <button type="button" id="buy"><?php echo "<a href='ticket.php?id={$rowid}'>".$BUYTICKET."</a></br>";
+                ?> </button>
                
         </form> 
                 <br><br><br><br><br>
-                <p6>Rating & Comment</p6><br>
+                <h3>Rating & Comment</h3><br/>
                 
                 <?php
             if ($result4->num_rows > 0) {
@@ -100,6 +116,37 @@ table, th, td {
             } ?>
                 
             </div>
+            <br/>
+            <h3>Leave Feedback</h3>
+            <form onSubmit="return checkForm(this)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="GET">		
+			<table>
+				<tr>
+					<td>
+						<label for="rating" class="label"> Rating:</label>
+						<select id="rating" name="rating">\
+							  <option selected="selected">Please Select</option>
+							  <option value="1">1/5</option>
+							  <option value="2">2/5</option>
+							  <option value="3">3/5</option>
+							  <option value="4">4/5</option>
+							  <option value="6">5/5</option>
+						</select>
+					</td>
+					<td>
+						<label for="title" class="label"> Title:</label>
+						<input type="title" id="title" name="title"/> <br/>
+					</td>
+					<td>
+						<br/>
+						<label for="description" class="label">Description:</label>
+						<textarea id = "description" name="description" rows="3" class="entry"></textarea>
+					</td>
+					<td>
+					<input style= "font-size: 15px; background: #f5f5f5;"
+		  			type="submit"  value="Add Comment" name="submit">
+		  			</td>
+			</table>
+			</form>
             
 	</div>
 	</div>
