@@ -18,6 +18,7 @@
       $endDate = $row2['event_end_date_time'];
       $eventDescription = $row2['description'];
       $eventName = $row2['event_name'];
+      $ticketEndTime = $row2['ticket_end_date_time'];
       
       $query3=("SELECT COUNT(*) as total FROM ticket WHERE event_id = $rowid");
       $result3 = mysqli_query($connection, $query3);

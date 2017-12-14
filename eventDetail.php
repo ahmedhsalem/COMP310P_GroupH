@@ -4,6 +4,8 @@
       require_once ('eventList.php');
       ob_end_clean();
       require_once('eventDetailIndex.php');
+      require ('eventListIndex.php');
+
 ?>
 <!DOCTYPE html>
 <head>
@@ -64,6 +66,16 @@
                 <?php echo "$eventDescription" ?>
                 <br><p5>Tickets Available: </p5>
                 <?php echo $totalTicket-$soldTicket?>
+                <br><br><br>
+                <?php
+                $row1 = mysqli_fetch_assoc($result1);
+                $id=$row1['event_id'];
+                $BUYTICKET = "BUY TICKET";
+                echo "<a href='ticket.php?id={$id}'>".$BUYTICKET."</a></br>";
+                ?>        
+                
+               
+        </form> 
                 <br><br><br><br><br>
                 <p6>Rating & Comment</p6><br>
                 
