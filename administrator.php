@@ -1,20 +1,15 @@
+<?php
+      require_once('session.php');
+?>
 <!DOCTYPE html>
 <head>
-  <title>Operahouse Project</title>
   <link href="layout.css" rel="stylesheet" type="text/css"/>
-  <?php require_once "session.php";?>
 </head>
 <style>
-	.box {
-		width:24.94%;
-		height: 150px;
-		background-color: white;
-		float: left;
-		border-right:1px solid black;
-		border-bottom: 1px solid black;
-}
-	#rightbox {
-		border: none;
+   
+.title {
+	font-size: 1.2em;
+	font-weight: bold;
 }
 </style>
 <body>
@@ -31,7 +26,7 @@
 				<ul>
 					<li><a href="home_page.php" class="links">Home</a>
 					<li><a href="index.html" class="links">Events</a>
-					<li><a href="eventList.php" class="links">Event List</a>
+					<li><a href="DVD_Rental_Page.html" class="links">Locations</a>
 					<li><a href="request_event_page.php" class="links">Request an Event</a>
 					<li><a href="DVD_Returns.html" class="links">Contact Us</a>
 				</ul>
@@ -39,7 +34,7 @@
 		</header>
 		<form action="search_results_page.php">
 		<input type="submit" value="Go" id="go"/>
-		<input type="text" id="search" name = "search" class="search"/>
+		<input type="text" id="search" class="search"/>
 		<label for="search" id="label">Search:</label>
 		</form>
 	</div>
@@ -51,16 +46,14 @@
 	</div>
 	<div id="content">
 	<div class="innercontent">
+            <div id='columnHeading'>
+                <h2>Administrator</h2>
+            </div>
+            
+            </div>
 	</div>
 	</div>
-	<div class="box">
-	</div>
-	<div class="box">
-	</div>
-	<div class="box">
-	</div>
-	<div class="box" id="rightbox">
-	</div>
-	</div>
+<script type="text/javascript" src="settings_checker.js">
+</script>
 </body>
 </html>
