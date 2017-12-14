@@ -57,19 +57,44 @@
             <div id="contentColumn">
                 <p1>Event Name: </p1>
                 <?php echo $eventName;?>
-                <br><p2>Ticket Price: </p2>
+                <br><br><p2>Ticket Price: </p2>
                 <?php echo $ticketPrice;?>
-                <br><p3>Available Tickets: </p3>
-                <?php echo $totalTicket-$soldTicket;?>
-                <br><p4>Number of Tickets: </p4>
-                <br><p5>Time Left to Buy Tickets: </p5>
-                <?php require_once ('countDownTimer.php'); ?>
-                
+                <br><br><p3>Available Tickets: </p3>
                 <?php
+                $availableTickets = $totalTicket-$soldTicket;
+                echo $availableTickets;
+                ?>
+                
+                <br><br><p5>Time Left to Buy Tickets: </p5>
+                <?php require_once ('countDownTimer.php'); ?>
+                 
+                 
+                <br><br><br><p4> Number of Tickets: 
+                    <form>
+                        <select id="numberOfTickets" name="numberOfTickets">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                         
+                        </select>
+                        
+                    </form>
+                    </p4>
+
+               <?php
                
                 if(date('Y-m-d h:i:s')>$ticketEndTime || $totalTicket-$soldTicket==0){
                    echo "<br><br><br>Sorry the ticket is unavailable.";
-                } else {
+                } 
+                
+                else {
                     
                     $SUBMIT = "SUBMIT";
                     echo "<br><br><a href='ticketConfirmation.php'>".$SUBMIT."</a></br>";
@@ -77,6 +102,7 @@
                 }
                 
                 ?>
+                
                
             </div>
 	</div>

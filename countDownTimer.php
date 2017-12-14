@@ -2,7 +2,6 @@
 <!doctype html>
 <html>
 <head>
-<title>PHP Countdown Timer</title>
 <style>
  
 h1{
