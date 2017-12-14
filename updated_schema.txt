@@ -145,7 +145,11 @@ INSERT INTO category (category_name) VALUES
 	('Indoor Concert'),
 	('Outdoor Concert'),
 	('Ballet'),
-	('Theater');
+	('Theater'),
+	('Instrumental Performance'),
+	('Opera'),
+	("Children's Event"),
+	('Comedy');
 
 -- --------------------------------------------------------
 
