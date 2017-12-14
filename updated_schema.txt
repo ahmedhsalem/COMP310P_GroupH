@@ -114,7 +114,10 @@ CREATE TABLE feedback
 
 INSERT INTO feedback (ticket_id, title_of_description, description, rating) VALUES
 	(1, 'Never Again', 'Worst experience ever, the price was too high, the service was awful.',1),
-	(4, 'Magnificent', 'The show was amazing!', 5);
+	(5, 'So-So', 'Ehhhhh', 3),
+	(3, 'Good', "Seats weren't that comfortable", 4),
+	(4, "Wife liked it - I didn't", 'Title tells the story', 2),
+	(6, 'Fun', 'Would go again, enjoyable!', 5);
 
 -- --------------------------------------------------------
 
