@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <head>
   <link href="layout.css" rel="stylesheet" type="text/css"/>
+  <title>Buy Tickets</title>
 </head>
 <style>
    

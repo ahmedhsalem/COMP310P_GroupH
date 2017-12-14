@@ -14,7 +14,7 @@ if(isset($_POST['submit'])) {
 		$starttime = test_input($_POST['event_start_date_time']);
 		$endtime = test_input($_POST['event_end_date_time']);
 		$description = test_input($_POST['description']);
-
+//Code Adapted From https://codewithawa.com/posts/image-upload-using-php-and-mysql-database
 		// POST image name
 		$image = $_FILES['image']['name'];
 		// image file directory

@@ -91,7 +91,7 @@ INSERT INTO `location` (`location_id`, `location_name`) VALUES
 --
 
 CREATE TABLE `requested_event` (
-  `reservation_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `description` varchar(255) DEFAULT NULL,
   `event_name` varchar(255) DEFAULT NULL,
   `category_check_list` varchar(255) DEFAULT NULL,
@@ -103,6 +103,7 @@ CREATE TABLE `requested_event` (
   `event_end_date_time` datetime DEFAULT NULL,
   `ticket_start_date_time` datetime DEFAULT NULL,
   `ticket_end_date_time` datetime DEFAULT NULL,
+  `room_id` int(11) DEFAULT NULL,
   `approved` bit(1) DEFAULT 0,
   `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -111,10 +112,10 @@ CREATE TABLE `requested_event` (
 -- Dumping data for table `requested_event`
 --
 
-INSERT INTO `requested_event` (`reservation_id`, `description`, `event_name`, `check_list`, `event_capacity`, `location_id`, `ticket_price`, `user_id`, `event_start_date_time`, `event_end_date_time`, `ticket_start_date_time`, `ticket_end_date_time`, `approved`, `image`) VALUES
-(1, 'A beautiful performance by Enrique Iglesias.', 'Spanish Concert', 1, 150, 1, 20, 1, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', b'0', 'image1.jpg'),
-(2, 'British Popstar Performs.', 'Robbie Williams', 2, 8000, 2, 50, 1, '2017-11-29 21:00:00', '2017-11-30 01:00:00', '2017-10-29 22:00:00', '2017-11-29 20:00:00', b'1', 'image2.jpg'),
-(3, 'Russian Ballet Dancers.', 'Ballet', 1, 425, 1, 20, 2, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', b'0', 'image3.jpg');
+INSERT INTO `requested_event` (`description`, `event_name`, `category_check_list`, `event_capacity`, `location_id`, `ticket_price`, `user_id`, `event_start_date_time`, `event_end_date_time`, `ticket_start_date_time`, `ticket_end_date_time`, `room_id`, `approved`, `image`) VALUES
+('A beautiful performance by Enrique Iglesias', 'Spanish Concert', 1, 150, 1, 20, 1, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', 4, 0, 'image1.jpg'),
+('British Popstar Performs.', 'Robbie Williams', 2, 8000, 2, 50, 1, '2017-11-29 21:00:00', '2017-11-30 01:00:00', '2017-10-29 22:00:00', '2017-11-29 20:00:00', 3,1, 'image2.jpg'),
+('Russian Ballet Dancers.', 'Ballet', 1, 425, 1, 20, 2, '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00', 2, 0, 'image3.jpg');
 
 -- --------------------------------------------------------
 
@@ -212,7 +213,7 @@ INSERT INTO `trigger_alert` (`event_id`, `user_id`, `alert_time`) VALUES
 --
 
 CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
+  user_id INTEGER AUTO_INCREMENT PRIMARY KEY,
   `username` varchar(30) DEFAULT NULL,
   `password` varchar(30) DEFAULT NULL,
   `first_name` varchar(255) DEFAULT NULL,
@@ -226,14 +227,13 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `first_name`, `last_name`, `email`, `address`, `mobile_number`) VALUES
-(1, 'ahmedsalem', 'ahmed', 'Ahmed', 'Salem', 'ahmedhsalem@hotmail.com', 'NW1 5PL', '07442156678'),
-(2, 'waynehsu', 'wayne', 'Wayne', 'Hsu', 'wayne.hsu.15@ucl.ac.uk', 'W1T 5HB', '071824728473'),
-(3, 'beaegido', 'bea', 'Bea', 'Egido', 'beatriz.egido.15@ucl.ac.uk', 'NW8 8UW', '07234724378'),
-(4, 'jameswang', 'james', 'James', 'Wang', 'james.wang@doesntexist.ac.uk', 'n/a', '0700000000'),
-(5, 'beita', 'beita', 'Bea', 'Maestre', 'be@hotmail.com', '-', '-'),
-(6, 'd', '2', 'h', 'h', 'h@d.com', '', 'h'),
-(7, 'bea', 'hola', 'maestre', 'mea', 'user@hot.com', '', '677');
+INSERT INTO user ( first_name, last_name, username, password, email, address, mobile_number ) VALUES 
+	('Ahmed', 'Salem', 'ahmedsalem', 'ahmed', 'ahmedhsalem@hotmail.com', 'NW1 5PL', '07442156678' ),
+	('Wayne', 'Hsu', 'waynehsu', 'wayne', 'wayne.hsu.15@ucl.ac.uk', 'W1T 5HB', '071824728473' ),
+	('Bea', 'Egido', 'beaegido', 'bea', 'beatriz.egido.15@ucl.ac.uk', 'NW8 8UW', '07234724378' ),
+	('James', 'Wang', 'jameswang', 'james', 'james.wang@doesntexist.ac.uk', 'n/a', '0700000000' );
+
+
 
 --
 -- Indexes for dumped tables
@@ -267,7 +267,7 @@ ALTER TABLE `location`
 -- Indexes for table `requested_event`
 --
 ALTER TABLE `requested_event`
-  ADD PRIMARY KEY (`reservation_id`),
+  ADD PRIMARY KEY (`event_id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `location_id` (`location_id`);
 
@@ -327,7 +327,7 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `requested_event`
 --
 ALTER TABLE `requested_event`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `room`
 --
@@ -372,4 +372,4 @@ ALTER TABLE `room_category`
 --
 ALTER TABLE `ticket`
   ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `requested_event` (`reservation_id`);
+  ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `requested_event` (`event_id`);
