@@ -167,3 +167,8 @@ INSERT INTO administrator (first_name, last_name, username, password, level) VAL
 	('Michael', 'Smith', 'Msmith87', 'Michael', 02),
 	('John', 'Smith', 'Jsmith99', 'John', 01),
 	('David', 'Smith', 'Dsmith02', 'David', 01);
+
+-- --------------------------------------------------------
+
+ALTER TABLE requested_event ADD FULLTEXT (description);
+ALTER TABLE requested_event ADD FULLTEXT (event_name);
