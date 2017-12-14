@@ -1,51 +1,30 @@
 <?php
 require_once 'dbconnect.php';
 require_once 'testinput.php';
-
-$action = $_REQUEST['action']; 
-
-//Requesting image and placing it in folder
-if(isset($action) && $action =='add'){
-    $file = $_FILES ['image']; 
-    $name1 = $file ['name']; //Original name of file on client's machine
-    $type = $file ['type']; //the file’s MIME-type
-    $tmppath = $file ['tmp_name']; //name of the designated temporary file
-    $extension = explode("/", $file ['type']); //creates array: for ex: image[0],jpeg[1] 
-    $iname = rand().time().".".$extension[1];
-if($name1!="") 
-{ 
-	if(move_uploaded_file ($tmppath, '../tester/images'. $iname))//images is the folder where images will be saved (Change opera_house for name of your project)
-	{} 
-} 
-
-//requesting category check list info
-$checkbox1 = $_REQUEST['category_check_list'];
-$chk="";  
-foreach($checkbox1 as $chk1)  
-   {  
-      $chk .= $chk1.",";  
-   } 
-   
-//requesting & setting date info 
-$new_date_from = $_REQUEST['event_start_date_time'];
-//$new_date_from = date('Y-M-DTh:m', strtotime($_POST['event_start_date_time']));
-$new_date_to = $_REQUEST['event_end_date_time'];
-//date('Y-M-DTh:m', strtotime($_POST['event_end_date_time']));
-$current_date = date('Y-m-d H:i');
-//set ticket_end_date_time, 1 day before event starts
-$last_sale_date = $new_date_from;
-$last_sale_date = strtotime(date('Y-m-d H:i') . ' -1 day');
+require_once 'session.php';
+$eventname = $capacity = $ticketprice = $starttime = $endtime = $description = $image = "";
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+if(isset($_GET['submit'])) { 
+		$eventname = test_input($_GET['event_name']);
+		$capacity= test_input($_GET['event_capacity']);
+		$categoryid = $_GET['category_id'];
+		$roomid = $_GET['room'];
+		$locationid = $_GET['location'];
+		$ticketprice = test_input($_GET['ticket_price']);
+		$starttime = test_input($_GET['event_start_date_time']);
+		$endtime = test_input($_GET['event_end_date_time']);
+		$description = test_input($_GET['description']);
+		
+		$sql = "INSERT INTO `requested_event` (`description`, `event_name`, `category_id`, `event_capacity`, `location_id`, `ticket_price`, `user_id`, `event_start_date_time`, `event_end_date_time`, `ticket_start_date_time`, `ticket_end_date_time`, `room_id`, `approved`, `image`) VALUES
+		('$description', '$eventname', '$categoryid', '$capacity', '$locationid', '$ticketprice', '$userid_session', '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00','$roomid', 0, 'image1.jpg')";
+		mysqli_query($connection, $sql);
+		echo "Successfully Created";
+		}
+		mysqli_free_result($result);
+		mysqli_close($connection);
+		}
 
 
-//ROOM ??
-$sql = "INSERT INTO 'requested_event' ('event_id','description', 'event_name', 'category_check_list', 'event_capacity', 'ticket_price', 'user_id', 'event_start_date_time', 'event_end_date_time', 'ticket_start_date_time', 'ticket_end_date_time', 'room_id', 'approved', 'image') 
-  VALUES (NULL,'".$_REQUEST['description']."','".$_REQUEST['event_name']."','".$chk."', '".$_REQUEST['event_capacity']."', '".$_REQUEST['ticket_price']."', 5,'".$new_date_from."','".$new_date_to."', '".$current_date."' ,'".$last_sale_date."' ,3 ,0,'".$iname."')"; 
-    
-  if(mysqli_query($connection, $sql)){	 
-	 	  echo '<script type="text/javascript">window.location.href="home_page.php?msg=suc"</script>';
-    }else{	
-		   echo '<script type="text/javascript">window.location.href="home_page.php?msg=fail"</script>';
-	}
        
-}
+
 ?>
