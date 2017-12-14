@@ -2,10 +2,12 @@
 include_once 'session.php';
 
 	$with_any_one_of = "";
-	
+	$search_in = "";
 	
 	$queryCondition = "";
 	if(!empty($_POST["search"])) {
+		
+		
 		
 		foreach($_POST["search"] as $k=>$v){
 			if(!empty($v)) {
@@ -39,22 +41,10 @@ include_once 'session.php';
 						$search_in = $_POST["search"]["search_in"];
 						break;
 						
-					//category
-					case "with_any_one_of_cat":
-						$with_any_one_of_cat = $v;
-						$wordsAry = explode(" ", $v);
-						$wordsCount = count($wordsAry);
-						for($i=0;$i<$wordsCount;$i++) {			
-							if(!empty($_POST["search"]["search_in"])) {
-								$queryCondition .= $_POST["search"]["search_in"] . " LIKE '%" . $wordsAry[$i] . "%'";
-							} else {
-								$queryCondition .= "requested_event.category_id LIKE '%" . $wordsAry[$i] . "%'";
-							}
+					
 							
-							
-						}
+						
 					}
-						break;
 				}
 			}
 		}
@@ -66,7 +56,7 @@ LEFT JOIN category ON requested_event.category_id=category.category_id" . $query
 	$result = mysqli_query($connection,$sql);
 
 ?>
-
+	
 <html>
 <head>
   <event_name>Search for Events</event_name>
@@ -151,6 +141,8 @@ height: 700px;
 					
 					
 					<label class="search-label">Use Keywords and filters to find the event you're looking for:</label>
+					
+					
 					
 					<br />
 					<br />
