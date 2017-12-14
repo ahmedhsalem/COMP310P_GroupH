@@ -1,5 +1,8 @@
-<?php include_once "events.php";
-	  include_once "session.php"; ?>
+<?php include "events.php";
+	  include_once "session.php";
+	include_once "image_uploader.php";
+  $result = mysqli_query($db, "SELECT image FROM requested_event");
+?>
 
 <!DOCTYPE html>
 <head>
@@ -26,6 +29,11 @@
 }
 #content {
 height: 700px;
+}
+#upload {
+float: right;
+display: block;
+margin-right: 30%;
 }
 
   </style>
@@ -63,10 +71,8 @@ height: 700px;
 	<div id="content">
 	<div class="innercontent">
 	
-	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="GET" >
-            <h2 align="center" class="loginform">Request to Host</h2>
-                <?php if(isset($_REQUEST['msg']) && $_REQUEST['msg']=="suc"){?>
-	  			<h5 style="color:green;">Event Added Successfully!</h5><?php }?>
+	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="GET" enctype="multipart/form-data" >
+            <h2 align="center">Request to Host</h2>
             <br />
             <div>
                 <label for="event_name" class="label"><b>Event Name:</b></label>
@@ -77,7 +83,7 @@ height: 700px;
             <br />
             <br />
             <div>
-                <label class="label"><b>Event Categories:</b></label>
+                <label class="label"><b>Event Category:</b></label>
                 <br />
                
                 
@@ -100,7 +106,8 @@ height: 700px;
             <div>
                 <label for="room" class="label"><b>Select Room:</b></label>
                 <div>
-                    <select id="room" name="room">
+                    <select id="room" name="room">\
+                      <option selected="selected">Please Select</option>
 					  <option value="1">Grand Theater Room</option>
 					  <option value="2">Outdoor Courtyard</option>
 					  <option value="3">Stage 1</option>
@@ -111,9 +118,10 @@ height: 700px;
             <br />
             <br />
 			<div>
-                <label for="location" class="label"><b>Select Room:</b></label>
+                <label for="location" class="label"><b>Select Location:</b></label>
                 <div>
-                    <select id="location" name="location">
+                    <select id="location" name="location" >
+                      <option selected="selected">Please Select</option>
 					  <option value="1">Operahouse 1</option>
 					  <option value="2">Operahouse 2</option>
 					  <option value="3">Operahouse 3</option>
@@ -164,36 +172,30 @@ height: 700px;
                 </div>
             </div>
             <br />
+            <div>
+                <label for="description" class="label"><b>Upload Image</b></label>
+                <div>
+                	<input type="hidden" name="size" value="1000000000">
+ 					<input type="file" class="entry" name="image">
+                </div>
+            </div>
+            <br/><br/>
+			<?php
+			
+			while ($row = mysqli_fetch_assoc($result)) {
+			echo "<img src='images/".$row['image']."' >";
+			}
+			?>
+            <br/>
              <div class="label">
                 <div>
-                    <input style= "font-size: 15px; background: #f5f5f5;
-		  class="entry" type="submit"  value="Add Event" name="submit">
+                    <input style= "font-size: 15px; background: #f5f5f5;"
+		  			class="entry" type="submit"  value="Add Event" name="submit">
                     <input type="hidden" name="action" value="add">
                 </div>
             </div>
             
         </form>
-            <!--
-            <div>
-                <label for="image" class="label"><b>Event Image:</b></label>
-                <div>
-                    <input class="entry" type="file" name="image" id="image" required>
-                </div>          
-            </div>
-            <br />
-            <br />
-    
-            <div class="label">
-                <div>
-                    <input style= "font-size: 15px; background: #f5f5f5;
-		  class="entry" type="submit"  value="Add Event">
-                    <input type="hidden" name="action" value="add">
-                </div>
-            </div>
-            
-        </form>
-	</div>
-	</div> --!>
 <script type="text/javascript" src = "checker.js"></script>
 </body>
 </html>

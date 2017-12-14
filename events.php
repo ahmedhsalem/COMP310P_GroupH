@@ -15,16 +15,16 @@ if(isset($_GET['submit'])) {
 		$endtime = test_input($_GET['event_end_date_time']);
 		$description = test_input($_GET['description']);
 		
-		$sql = "INSERT INTO `requested_event` (`description`, `event_name`, `category_id`, `event_capacity`, `location_id`, `ticket_price`, `user_id`, `event_start_date_time`, `event_end_date_time`, `ticket_start_date_time`, `ticket_end_date_time`, `room_id`, `approved`, `image`) VALUES
-		('$description', '$eventname', '$categoryid', '$capacity', '$locationid', '$ticketprice', '$userid_session', '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00','$roomid', 0, 'image1.jpg')";
+		$sql = "INSERT INTO `requested_event` (`description`, `event_name`, `category_id`, `event_capacity`, `location_id`, `ticket_price`, `user_id`, `event_start_date_time`, `event_end_date_time`, `ticket_start_date_time`, `ticket_end_date_time`, `room_id`, `approved`) VALUES
+		('$description', '$eventname', '$categoryid', '$capacity', '$locationid', '$ticketprice', '$userid_session', '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00','$roomid', 0)";
 		mysqli_query($connection, $sql);
-		echo "Successfully Created";
-		}
+		
+		  $msg = "";
+
+		
 		mysqli_free_result($result);
 		mysqli_close($connection);
-		}
+		}}
 
 
-       
-
-?>
+       ?>
