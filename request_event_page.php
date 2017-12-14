@@ -1,6 +1,7 @@
 <?php include "events.php";
 	  include_once "session.php";
-	include_once "image_uploader.php";
+	  
+	$db = mysqli_connect("localhost", "root", "", "opera_house");
   $result = mysqli_query($db, "SELECT image FROM requested_event");
 ?>
 
@@ -71,7 +72,7 @@ margin-right: 30%;
 	<div id="content">
 	<div class="innercontent">
 	
-	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="GET" enctype="multipart/form-data" >
+	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data" >
             <h2 align="center">Request to Host</h2>
             <br />
             <div>
@@ -168,7 +169,7 @@ margin-right: 30%;
                 <label for="description" class="label"><b>Event Description:</b></label>
                 <div>
                     
-                    <textarea id = "description" placeholder="Describe your event as in much detail as possible" name ="description" rows="3" required><?php if(isset($_GET['description'])) echo htmlspecialchars($_GET['description']); ?></textarea><br/><br/><br/><br/>
+                    <textarea id = "description" placeholder="Describe your event as in much detail as possible" name ="description" rows="3" required><?php if(isset($_POST['description'])) echo htmlspecialchars($_POST['description']); ?></textarea><br/><br/><br/><br/>
                 </div>
             </div>
             <br />
