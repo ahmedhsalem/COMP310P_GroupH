@@ -1,0 +1,4 @@
+Wayne Add This
+
+ALTER TABLE requested_event ADD FULLTEXT (description);
+ALTER TABLE requested_event ADD FULLTEXT (event_name);

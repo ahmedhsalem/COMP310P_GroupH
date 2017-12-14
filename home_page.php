@@ -13,9 +13,11 @@
 		border-right:1px solid black;
 		border-bottom: 1px solid black;
 }
+
 	#rightbox {
 		border: none;
 }
+
 </style>
 <body>
 	<div id="wrapper">
@@ -30,16 +32,16 @@
 			<nav>
 				<ul>
 					<li><a href="home_page.php" class="links">Home</a>
-					<li><a href="index.html" class="links">Events</a>
 					<li><a href="eventList.php" class="links">Event List</a>
+					<li><a href="DVD_Rental_Page.html" class="links">Locations</a>
 					<li><a href="request_event_page.php" class="links">Request an Event</a>
 					<li><a href="DVD_Returns.html" class="links">Contact Us</a>
 				</ul>
 			</nav>
 		</header>
-		<form action="search_results_page.php">
+		<form action="search_results_page.php" method="GET">
 		<input type="submit" value="Go" id="go"/>
-		<input type="text" id="search" name = "search" class="search"/>
+		<input type="text" id="search" class="search" name="search"/>
 		<label for="search" id="label">Search:</label>
 		</form>
 	</div>
