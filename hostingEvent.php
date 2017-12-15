@@ -101,6 +101,10 @@
                 <?php echo $soldTicket; ?>
                 <br><br><br><br><br><br><p2>Tickets Available:</p2>
                 <?php echo $totalTicket-$soldTicket; ?>
+                
+                <br><br><br><br><br><br>
+                <?php echo "<a href='trigger.php?id={$rowid}'>"."Trigger"."</a></br>";
+                ?>
             </div>
 
             

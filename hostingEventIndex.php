@@ -2,7 +2,7 @@
 $rowid = $_GET['id'];
       
       
-      $query4=("SELECT DISTINCT first_name, last_name FROM user
+      $query4=("SELECT DISTINCT first_name, last_name, email FROM user
                 JOIN ticket ON ticket.user_id = user.user_id
                 JOIN requested_event ON requested_event.event_id = ticket.event_id
                 WHERE requested_event.event_id = $rowid");
