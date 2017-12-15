@@ -1,5 +1,5 @@
 <?php require_once "session.php";
-require_once "eventDetailIndex.php";
+      require_once "home_page_index.php";
   ?>
 
 <!DOCTYPE html>
