@@ -31,7 +31,6 @@ table, th, td {
     	width: 300px;
     	resize: none;
     	padding: 1px;
-
     }
 #content {
 height: 700px;
@@ -88,6 +87,8 @@ height: 700px;
             <div id="contentColumn">
                 <p6>Event Category: </p6>
                 <?php echo $eventCategory; ?>
+                <br><p7>Location: </p7>
+                <?php echo $eventLocation; ?>
                 <br><p1>Total Tickets: </p1>
                 <?php echo $totalTicket; ?>
                 <br/><p2>Ticket Price: </p2>
@@ -165,3 +166,8 @@ height: 700px;
 </script>
 </body>
 </html>
+
+
+ticket start time 
+trigger
+locatiom detail to event 

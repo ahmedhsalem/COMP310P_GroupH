@@ -17,6 +17,7 @@
       $ticketEndTime = $row2['ticket_end_date_time'];
       $ticketStartTime = $row2['ticket_start_date_time'];
       
+      
       $query6=("SELECT * FROM category 
                 JOIN requested_event ON requested_event.category_id=category.category_id
                 WHERE requested_event.event_id = $rowid"
@@ -43,14 +44,12 @@
                 WHERE requested_event.event_id = $rowid");
       $result5 = mysqli_query($connection, $query5);
       
-      
-//      $query3=("SELECT * FROM requested_event WHERE requested_event.event_id = $rowid");
-//      $result3 = mysqli_query($connection, $query3);
-//      $row3 = mysqli_fetch_array($result3);
-//      $ticketPrice = $row3['ticket_price'];
-      
-//      $query4=("SELECT * FROM requested_event WHERE requested_event.event_id = $rowid");
-//      $result4 = mysqli_query($connection, $query4);
-//      $row4 = mysqli_fetch_array($result4);
-//      $ticketPrice = $row4['event_start_date_time'];
+      $query7=("SELECT * FROM location 
+                JOIN requested_event ON requested_event.location_id = location.location_id
+                WHERE requested_event.event_id = $rowid");
+      $result7 = mysqli_query($connection, $query7);
+      $row7 = mysqli_fetch_array($result7);
+      $eventLocation = $row7['location_name'];
+
+
       ?>

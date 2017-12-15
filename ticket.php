@@ -57,6 +57,8 @@
             <div id="contentColumn">
                 <p1>Event Name: </p1>
                 <?php echo $eventName;?>
+                <br><p7>Location: </p7>
+                <?php echo $eventLocation; ?>
                 <br/><p2>Ticket Price: </p2>
                 <?php echo $ticketPrice;?>
                 <br/><p3>Available Tickets: </p3>
