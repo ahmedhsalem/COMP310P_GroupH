@@ -61,7 +61,7 @@ table, th, td {
     // output data of each row
                 while($row4 = $result4->fetch_assoc()) {
         
-                    echo "<tr><td>" . $row4['first_name'].$row4['last_name']. "</td><td>" . $row4['email']. "</td></tr>";
+                    echo "<tr><td>" . $row4['first_name']."<br>".$row4['last_name']. "</td><td>" . $row4['email']. "</td></tr>";
                 }
                 echo "</table>";
             } else {
