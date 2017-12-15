@@ -2,6 +2,7 @@
 <!doctype html>
 <html>
 <head>
+<title>PHP Countdown Timer</title>
 <style>
  
 h1{
@@ -19,8 +20,8 @@ $remaining = $date - time();
 $days_remaining = floor($remaining / 86400);
 $hours_remaining = floor(($remaining % 86400) / 3600);
 ?>
-<?php if ($$days_remaining<=0 && $hours_remaining <=0) { 
+<?php if ($days_remaining<=0 && $hours_remaining <=0) { 
 echo "<br>EXPIRED"; } else {
-echo "<br>".$days_remaining."days and".$hours_remaining."hours"; }?> 
+echo "<br>".$days_remaining." days and ".$hours_remaining." hours"; }?> 
 </body>
 </html>

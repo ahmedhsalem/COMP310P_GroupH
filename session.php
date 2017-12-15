@@ -15,7 +15,7 @@ $mobile_session=$row['mobile_number'];
 echo $userid_session;
 
 
-$user_check2 = $_SESSION['administrator.username'];
+$user_check2 = $_SESSION['username'];
 $sql2 = "SELECT * FROM administrator WHERE username='$user_check2'";
 $result2 = mysqli_query($connection, $sql2);
 $row2 = mysqli_fetch_array($result2);

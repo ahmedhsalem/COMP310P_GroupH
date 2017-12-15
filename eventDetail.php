@@ -5,10 +5,23 @@
       ob_end_clean();
       require_once('eventDetailIndex.php');
       require ('eventListIndex.php');
+      require_once ('feedback.php');
 ?>
 <!DOCTYPE html>
 <head>
   <link href="layout.css" rel="stylesheet" type="text/css"/>
+  <script>
+  $(function() {
+    $('form').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: 'feedback.php',
+            data: data,
+        });
+        return false;
+    }); 
+})
+  </script>
 </head>
 <style>
     
@@ -99,16 +112,16 @@ height: 700px;
                 <?php echo "$startDate&nbspto&nbsp$endDate" ?>
                 <br><p4>Event Description: </p4>
                 <?php echo "$eventDescription" ?>
-                <br><p5>Tickets Available: </p5>
+                <br/><p5>Tickets Available: </p5>
                 <?php echo $totalTicket-$soldTicket?>
-                <br><br><br>
+                <br/><br/><br/>
                 <?php
                 $BUYTICKET = "BUY TICKET"; ?>
                 <label class="button" id="buy" action=""><?php echo "<a href='ticket.php?id={$rowid}'>".$BUYTICKET."</a></br>";
                 ?> </label>
                
         </form> 
-                <br><br><br><br><br>
+                <br/><br/><br/><br/><br/>
                 <h3>Rating & Comment</h3><br/>
                 
                 <?php
@@ -130,7 +143,7 @@ height: 700px;
             </div>
             <br/>
             <h3>Leave Feedback</h3>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="GET">		
+            <form method ="POST">		
 			<table>
 				<tr>
 					<td>
@@ -154,8 +167,8 @@ height: 700px;
 						<textarea id = "description" name="description" rows="3" class="entry"></textarea>
 					</td>
 					<td>
-					<input style= "font-size: 15px; background: #f5f5f5;"
-		  			type="submit"  value="Add Comment" name="submit">
+					<input style = "font-size: 15px; background: #f5f5f5;"
+		  			type="submit"  value="Add Comment" name="submit" id="submit"/>
 		  			</td>
 			</table>
 			</form>
@@ -166,4 +179,3 @@ height: 700px;
 </script>
 </body>
 </html>
-
