@@ -36,6 +36,17 @@ table, th, td {
 #content {
 height: 700px;
 }
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 5px 10px 5px 10px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
 </style>
 <body>
 	<div id="wrapper">
@@ -92,8 +103,8 @@ height: 700px;
                 <br><br><br>
                 <?php
                 $BUYTICKET = "BUY TICKET"; ?>
-                <button type="button" id="buy"><?php echo "<a href='ticket.php?id={$rowid}'>".$BUYTICKET."</a></br>";
-                ?> </button>
+                <label class="button" id="buy" action=""><?php echo "<a href='ticket.php?id={$rowid}'>".$BUYTICKET."</a></br>";
+                ?> </label>
                
         </form> 
                 <br><br><br><br><br>
@@ -118,7 +129,7 @@ height: 700px;
             </div>
             <br/>
             <h3>Leave Feedback</h3>
-            <form onSubmit="return checkForm(this)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="GET">		
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="GET">		
 			<table>
 				<tr>
 					<td>
@@ -129,7 +140,7 @@ height: 700px;
 							  <option value="2">2/5</option>
 							  <option value="3">3/5</option>
 							  <option value="4">4/5</option>
-							  <option value="6">5/5</option>
+							  <option value="5">5/5</option>
 						</select>
 					</td>
 					<td>
