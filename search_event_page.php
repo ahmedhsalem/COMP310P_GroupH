@@ -1,7 +1,6 @@
 <?php
       require_once('session.php');
       require ('search_event.php');
-
 ?>
 <!DOCTYPE html>
 	
@@ -92,7 +91,7 @@ height: 700px;
 							<option value="">Filters</option>
 							<option value="event_name" <?php if($search_in=="event_name") { echo "selected"; } ?>>Name of Event</option>
 							<option value="description" <?php if($search_in=="description") { echo "selected"; } ?>>Description</option>
-							<option value="category_id" <?php if($search_in=="category_id") { echo "selected"; } ?>>Category</option>
+							<option value="category_name" <?php if($search_in=="category_name") { echo "selected"; } ?>>Category</option>
 						</select>
 					</div>	
 					<br />
@@ -108,6 +107,7 @@ height: 700px;
 				</div>
 			</div>
 			</form>	
+			
 			<?php while($row = mysqli_fetch_assoc($result)) { ?>
 		 	<!--Shows results -->
 			<div>
@@ -130,5 +130,4 @@ height: 700px;
 <script type="text/javascript" src = "checker.js"></script>
 </body>
 </html>
-
 
