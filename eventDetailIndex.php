@@ -53,7 +53,6 @@
       $result7 = mysqli_query($connection, $query7);
       $row7 = mysqli_fetch_array($result7);
       $eventLocation = $row7['location_name'];
-
       
       $query8=("SELECT * FROM requested_event WHERE approved='1' 
               AND requested_event.event_start_date_time > NOW() 
