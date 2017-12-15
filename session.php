@@ -22,6 +22,7 @@ $userid_session2=$row2['administrator_id'];
 $username_session2=$row2['username'];
 echo $userid_session2;
 
+//getting the first name of user or administrator
 if($userid_session == null) {
     $welcomeName = $login_session2;
 } else {
