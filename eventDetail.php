@@ -167,7 +167,3 @@ height: 700px;
 </body>
 </html>
 
-
-ticket start time 
-trigger
-locatiom detail to event 
