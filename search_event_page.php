@@ -7,10 +7,11 @@ include_once 'session.php';
 	
 	$queryCondition = "";
 	
+	//if user has typed and searched
 	if(!empty($_POST["search"])) {
 		
 		
-		
+		//loop
 		foreach($_POST["search"] as $k=>$v){
 			if(!empty($v)) {
 
@@ -22,6 +23,7 @@ include_once 'session.php';
 						$queryCondition .= " WHERE ";
 					}
 				}
+				//consider both word search and filters
 				switch($k) {
 					case "with_any_one_of":
 						$with_any_one_of = $v;
@@ -51,6 +53,7 @@ include_once 'session.php';
 			}
 		}
 	
+	//
 	$orderby = " ORDER BY id DESC"; 
 	$sql = "SELECT requested_event.event_name, requested_event.description, requested_event.category_id, category.category_name
 FROM requested_event
