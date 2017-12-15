@@ -1,7 +1,6 @@
 <?php require_once "session.php";
-	  
-  $db = mysqli_connect("localhost", "root", "root", "opera_house");
-  $result = mysqli_query($db, "SELECT image, event_id FROM requested_event ORDER BY event_id DESC LIMIT 1");
+
+  $result = mysqli_query($connection, "SELECT image, event_id FROM requested_event ORDER BY event_id DESC LIMIT 1");
   $row = mysqli_fetch_array($result);?>
 
 <!DOCTYPE html>
