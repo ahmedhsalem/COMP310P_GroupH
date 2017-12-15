@@ -33,7 +33,7 @@
 						$wordsCount = count($wordsAry);
 						for($i=0;$i<$wordsCount;$i++) {
 							if(!empty($_POST["search"]["search_in"])) {
-								$queryCondition .= $_POST["search"]["search_in"] . " LIKE '%" . $wordsAry[$i] . "%'";
+								$queryCondition .= $_POST["search"]["search_in"] . " LIKE '%" . $v . "%'";
 							} else {
 								$queryCondition .= "description LIKE '%" . $wordsAry[$i] . "%' OR event_name LIKE '%" . $wordsAry[$i] . "%' OR category.category_name LIKE '%" . $wordsAry[$i] . "%'";
 							}
