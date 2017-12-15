@@ -1,8 +1,13 @@
+<?php require_once "session.php";
+	  
+  $db = mysqli_connect("localhost", "root", "root", "opera_house");
+  $result = mysqli_query($db, "SELECT image, event_id FROM requested_event ORDER BY event_id DESC LIMIT 1");
+  $row = mysqli_fetch_array($result);?>
+
 <!DOCTYPE html>
 <head>
   <title>Operahouse Project</title>
   <link href="layout.css" rel="stylesheet" type="text/css"/>
-  <?php require_once "session.php";?>
 </head>
 <style>
 	.box {
@@ -52,6 +57,9 @@
 	<a href="logout.php"><button type="button">Logout</button></a>
 	</div>
 	<div id="content">
+		<?php $src = "images/" . $row[0];
+		$id=$row["event_id"];?>
+		<a href="eventDetail.php?id={$id}"><img style="max-height:75%" src="<?php echo $src;?>"/></a>
 	<div class="innercontent">
 	</div>
 	</div>
