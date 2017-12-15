@@ -1,10 +1,12 @@
 <?php
 include_once 'session.php';
 
+	//setting variables - words searched for and where to search
 	$with_any_one_of = "";
 	$search_in = "";
 	
 	$queryCondition = "";
+	
 	if(!empty($_POST["search"])) {
 		
 		
