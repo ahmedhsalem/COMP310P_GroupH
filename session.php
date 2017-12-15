@@ -18,9 +18,17 @@ $sql2 = "SELECT * FROM administrator WHERE username='$user_check2'";
 $result2 = mysqli_query($connection, $sql2);
 $row2 = mysqli_fetch_array($result2);
 $login_session2=$row2['first_name'];
-$userid_session2=$row2['user_id'];
+$userid_session2=$row2['administrator_id'];
 $username_session2=$row2['username'];
 echo $userid_session2;
+
+if($userid_session == null) {
+    $welcomeName = $login_session2;
+} else {
+    $welcomeName = $login_session;
+}
+
+
 if (!isset($login_session2) && !isset($login_session)){
 	mysqli_close($connection);
 	echo "Failed to Make Session";
