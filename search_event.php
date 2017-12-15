@@ -22,7 +22,7 @@
 					if(!empty($queryCondition)) {
 						$queryCondition .= " AND ";
 					} else {
-						$queryCondition .= " WHERE ";
+						$queryCondition .= " WHERE (";
 					}
 				}
 				//consider both word search and filters
@@ -55,11 +55,11 @@
 			}
 		}
 	
-	//need to filter for only approved
-	$orderby = " ORDER BY id DESC"; 
+	//filtered by approved
+	$orderby = " ORDER BY event_id DESC"; 
 	$sql = "SELECT requested_event.event_name, requested_event.description, requested_event.category_id, category.category_name
 FROM requested_event
-LEFT JOIN category ON requested_event.category_id=category.category_id" . $queryCondition;
+LEFT JOIN category ON requested_event.category_id=category.category_id" . $queryCondition . ") AND requested_event.approved = '1'" . $orderby;
 	$result = mysqli_query($connection,$sql);
 		
 ?>
