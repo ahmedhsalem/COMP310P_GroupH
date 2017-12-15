@@ -1,6 +1,7 @@
 <?php
       require_once('session.php');
       require ('search_event.php');
+      require_once "initialise.php";
 ?>
 <!DOCTYPE html>
 	
@@ -29,42 +30,13 @@
 #content {
 height: 700px;
 }
-
   </style>
   
  
 	
   </head>
   <body>
-<div id="wrapper">
-	<div id="banner">
-	<a href="home_page.php">
-	<img src="logo.png"
-	width="20%" height="70px"
-	align="left"></a> 
-	</div>
-	<div id="menuTop">
-		<header id="page_header">
-			<nav>
-				<ul>
-					<li><a href="home_page.php" class="links">Home</a>
-					<li><a href="search_event_page.html" class="links">Events</a>
-					<li><a href="DVD_Rental_Page.html" class="links">Locations</a>
-					<li><a href="request_event_page.php" class="links">Request an Event</a>
-					<li><a href="DVD_Returns.html" class="links">Contact Us</a>
-				</ul>
-			</nav>
-		</header>
-		<input type="submit" value="Go" id="go"/>
-		<input type="text" id="search1" class="search"/>
-		<label for="search1" id="label">Search:</label>
-	</div>
-	<div id="columnRight">
-	Welcome, <?php echo " $login_session"; ?> </br>
-	<a href="myEvent.php">My Events</a></br>
-	<a href="settings_page.php">Settings</a></br>
-	<a href="logout.php"><button type="button">Logout</button></a>
-	</div>
+
 	<div id="content">
 	<div class="innercontent">
 	
@@ -130,4 +102,3 @@ height: 700px;
 <script type="text/javascript" src = "checker.js"></script>
 </body>
 </html>
-
