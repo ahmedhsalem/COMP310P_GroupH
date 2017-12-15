@@ -1,12 +1,16 @@
 <?php
-
+include_once ('dbconnect.php');
+include_once ('administrator.php');
       $query1=("SELECT * FROM requested_event WHERE approved = 0");
       $result1 = mysqli_query($connection, $query1);
-//      $row1 = mysqli_fetch_array($result1);
-//      $unapprovedEventName = $row1['event_name'];
-//      $unapprovedEventDescription = $row1['description'];
-//      $unapprovedTicketPrice = $row1['ticket_price'];
-//      $unapprovedEventStartDate = $row1['event_start_date_time'];
-//      $unapprovedEventEndDate = $row1['event)end_date_time'];
-
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if(isset($_POST["submit"]))
+            {
+      $row = mysqli_fetch_array($result1);
+      $eventid=$row['event_id'];
+	  $sql = "UPDATE requested_event SET approved = 1 WHERE event_id = '$eventid' ";
+	  $result = mysqli_query($connection, $sql);
+	  echo $eventid;}
+}
+  
 ?>
