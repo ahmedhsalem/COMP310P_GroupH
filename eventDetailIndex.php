@@ -16,6 +16,7 @@
       $eventName = $row2['event_name'];
       $ticketEndTime = $row2['ticket_end_date_time'];
       $ticketStartTime = $row2['ticket_start_date_time'];
+      $image = $row2['image'];
       
       
       $query6=("SELECT * FROM category 

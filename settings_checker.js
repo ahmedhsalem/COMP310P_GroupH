@@ -1,5 +1,5 @@
 function checkForm(form){  
-			var username = document.getElementById("username").value;
+			var eventname = document.getElementById("event_name").value;
 			var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 			var usernameformat = /^[\w ]+$/;
 			var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/ 

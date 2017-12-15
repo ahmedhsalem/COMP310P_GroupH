@@ -63,9 +63,8 @@
 	<p id="changed"><?php echo $changed; ?>
 	<form onSubmit="return checkForm(this)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="GET">		
 			<label for="email" class="label"> Change E-mail:</label>
-			<input type="email" id="email" name="email" class="entry" placeholder="<?php echo $email_session ?>"/> <br/>
-			<p class=error id="emailError"></p>
-			<br/>
+			<input type="email" id="email" name="email" class="entry" placeholder="<?php echo $email_session ?>"/> 
+			<br/><p class=error id="emailError"></p><br/>
 		
 			<label for="password" class="label">Change Password:</label>
 			<input type="password" name="password" id="password" class="entry"/> <br/>

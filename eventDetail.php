@@ -46,7 +46,7 @@ table, th, td {
     	padding: 1px;
     }
 #content {
-height: 700px;
+height: 1400px;
 }
 .button {
   font: bold 11px Arial;
@@ -98,6 +98,7 @@ height: 700px;
                 <h2><?php echo $eventName;?></h2>
             </div>
             <div id="contentColumn">
+            	<?php echo "<img src='images/".$image."'width='600px' height='400px'>"; ?><br/>
                 <p6>Event Category: </p6>
                 <?php echo $eventCategory; ?>
                 <br><p7>Location: </p7>
