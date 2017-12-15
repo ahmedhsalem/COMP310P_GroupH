@@ -57,8 +57,8 @@
 	</div>
 	<div id="content">
 		<?php $src = "images/" . $row[0];
-		$id=$row["event_id"];?>
-		<a href="eventDetail.php?id={$id}"><img style="height:75%" src="<?php echo $src;?>"/></a>
+		$id=$row["event_id"];
+		echo '<a href="eventDetail.php?id=' . $id . '">';?><img style="height:75%" src="<?php echo $src;?>"/></a>
 	<div class="innercontent">
 	</div>
 	</div>
