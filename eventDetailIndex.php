@@ -1,6 +1,8 @@
 <?php 
       $rowid = $_GET['id'];
       
+      $result = mysqli_query($connection, "SELECT image, event_id FROM requested_event ORDER BY event_id DESC LIMIT 1");
+      $row = mysqli_fetch_array($result);
       
       $query1=("SELECT * FROM requested_event WHERE approved = '1'");
       $result1=mysqli_query($connection, $query1);
@@ -16,7 +18,6 @@
       $eventName = $row2['event_name'];
       $ticketEndTime = $row2['ticket_end_date_time'];
       $ticketStartTime = $row2['ticket_start_date_time'];
-      $image = $row2['image'];
       
       
       $query6=("SELECT * FROM category 
@@ -52,5 +53,39 @@
       $row7 = mysqli_fetch_array($result7);
       $eventLocation = $row7['location_name'];
 
-
+      
+      $query8=("SELECT * FROM requested_event WHERE approved='1' 
+              AND requested_event.event_start_date_time > NOW() 
+              ORDER BY event_start_date_time ASC 
+              LIMIT 1 ");
+      $result8 = mysqli_query($connection, $query8);
+      $row8 = mysqli_fetch_array($result8);
+      $eventNameBox1 = $row8['event_name'];
+      $eventDescriptionBox1 = $row8['description'];
+      $eventDateBox1 =$row8['event_start_date_time'];
+      
+      
+          
+      $query9=("SELECT * FROM requested_event 
+              WHERE approved='1' 
+              AND requested_event.event_start_date_time > '$eventDateBox1' 
+              ORDER BY event_start_date_time ASC 
+              LIMIT 1 ");
+      $result9 = mysqli_query($connection, $query9);
+      $row9 = mysqli_fetch_array($result9);
+      $eventNameBox2 = $row9['event_name'];
+      $eventDescriptionBox2 = $row9['description'];
+      $eventDateBox2 =$row9['event_start_date_time'];
+      
+      $query10=("SELECT * FROM requested_event 
+              WHERE approved='1' 
+              AND requested_event.event_start_date_time > '$eventDateBox2' 
+              ORDER BY event_start_date_time ASC 
+              LIMIT 1 ");
+      $result10 = mysqli_query($connection, $query10);
+      $row10 = mysqli_fetch_array($result10);
+      $eventNameBox3 = $row10['event_name'];
+      $eventDescriptionBox3 = $row10['description'];
+      $eventDateBox3 =$row10['event_start_date_time'];
+      
       ?>
