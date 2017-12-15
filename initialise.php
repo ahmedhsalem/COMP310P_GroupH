@@ -16,6 +16,14 @@
 					<li><a href="eventList.php" class="links">Event List</a>
                                         <li><a href="search_event_page.php" class="links">Search Event</a>
 					<li><a href="request_event_page.php" class="links">Request an Event</a>
+                                        <?php if($userid_session == null) { ?>
+                                                
+                                        <li><a href="administrator.php" class="links">Administrator</a>
+                                           
+                                            
+                                        <?php } ?>
+                                        
+                                        
 				</ul>
 			</nav>
 		</header>
