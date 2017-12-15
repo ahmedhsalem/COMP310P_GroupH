@@ -34,8 +34,9 @@
 				<ul>
 					<li><a href="home_page.php" class="links">Home</a>
 					<li><a href="eventList.php" class="links">Event List</a>
-                                        <li><a href="search_event_page.php" class="links">Search Event</a>
+					<li><a href="DVD_Rental_Page.html" class="links">Locations</a>
 					<li><a href="request_event_page.php" class="links">Request an Event</a>
+					<li><a href="DVD_Returns.html" class="links">Contact Us</a>
 				</ul>
 			</nav>
 		</header>
@@ -52,9 +53,8 @@
 	<a href="logout.php"><button type="button">Logout</button></a>
 	</div>
 	<div id="content">
-		<?php $src = "images/" . $row[0];
-		$id=$row["event_id"];?>
-		<a href="eventDetail.php?id={$id}"><img style="height:75%" src="<?php echo $src;?>"/></a>
+		<?php $src = "images/" . $image; ?>
+		<a href="eventDetail.php?id={$id}"><img style="height:100%; width: 60%;" src="<?php echo $src;?>"/></a>
 	<div class="innercontent">
 	</div>
 	</div>
