@@ -111,6 +111,11 @@ height: 700px;
 			<?php while($row = mysqli_fetch_assoc($result)) { ?>
 		 	<!--Shows results -->
 			<div>
+				
+				<?php $id=$row['event_id'];
+				echo '<a href="eventDetail.php?id=' . $id . '">';?>
+				<div><strong><?php echo $row["event_name"]; ?></strong></div>
+				</a>				
 				<div><strong><?php echo $row["event_name"]; ?></strong></div>
 				<div class="result-description"><?php echo $row["description"]; ?></div>
 				<div class="result-description">Category: <?php echo $row["category_name"]; ?></div>
