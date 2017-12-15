@@ -1,4 +1,4 @@
-#wrapper {
+        #wrapper {
 		width:1320px;
 		background-color: white;
 		float: center;
@@ -80,5 +80,8 @@
   	padding-right: 10px;  	
 }	
 
-
-
+        #heading {
+		width:75%;
+		height: 50px;
+		background-color: #D3D3D3;	
+}

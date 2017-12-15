@@ -29,6 +29,11 @@
 	<div class="innercontent">
 	</div>
 	</div>
+<div id="heading">
+    <h1>Coming Events</h1>
+    
+</div>
+
 	<div class="box">
             <?php 
                 if($eventNameBox1 == null) {
