@@ -54,7 +54,7 @@ include_once 'session.php';
 	$orderby = " ORDER BY id DESC"; 
 	$sql = "SELECT requested_event.event_name, requested_event.description, requested_event.category_id, category.category_name
 FROM requested_event
-LEFT JOIN category ON requested_event.category_id=category.category_id" . $queryCondition;
+LEFT JOIN category ON requested_event.category_id=category.category_id WHERE approved=1" . $queryCondition;
 	$result = mysqli_query($connection,$sql);
 
 ?>
