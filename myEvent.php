@@ -14,9 +14,7 @@
     float: right;
     border-width: 1px 1px 1px 1px;
     float: top;
-
 }
-
 #columnEventHost {
     width: 60%;
     height: 194px;
@@ -25,7 +23,6 @@
     float: top;
     
 }
-
 #columnEventAttending {
     width: 60%;
     height: 194px;
@@ -51,10 +48,9 @@
 			<nav>
 				<ul>
 					<li><a href="home_page.php" class="links">Home</a>
-					<li><a href="index.html" class="links">Events</a>
-					<li><a href="DVD_Rental_Page.html" class="links">Locations</a>
+					<li><a href="eventList.php" class="links">Event List</a>
+                                        <li><a href="search_event_page.php" class="links">Search Event</a>
 					<li><a href="request_event_page.php" class="links">Request an Event</a>
-					<li><a href="DVD_Returns.html" class="links">Contact Us</a>
 				</ul>
 			</nav>
 		</header>
@@ -112,15 +108,3 @@
 </script>
 </body>
 </html>
-             
-
-
-
-
-
-    
-
-          
-        
-     
-

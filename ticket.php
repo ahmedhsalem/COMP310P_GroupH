@@ -6,9 +6,7 @@
       require_once('eventDetailIndex.php');
       require_once ('eventListIndex.php');
       require_once ('purchase.php');
-
      
-
     
       
 ?>
@@ -35,7 +33,6 @@
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
 }
-
 </style>
 <body>
 	<div id="wrapper">
@@ -50,10 +47,9 @@
 			<nav>
 				<ul>
 					<li><a href="home_page.php" class="links">Home</a>
-					<li><a href="index.html" class="links">Events</a>
-					<li><a href="DVD_Rental_Page.html" class="links">Locations</a>
+					<li><a href="eventList.php" class="links">Event List</a>
+                                        <li><a href="search_event_page.php" class="links">Search Event</a>
 					<li><a href="request_event_page.php" class="links">Request an Event</a>
-					<li><a href="DVD_Returns.html" class="links">Contact Us</a>
 				</ul>
 			</nav>
 		</header>

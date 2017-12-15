@@ -37,10 +37,9 @@
 			<nav>
 				<ul>
 					<li><a href="home_page.php" class="links">Home</a>
-					<li><a href="index.html" class="links">Events</a>
-					<li><a href="DVD_Rental_Page.html" class="links">Locations</a>
+					<li><a href="eventList.php" class="links">Event List</a>
+                                        <li><a href="search_event_page.php" class="links">Search Event</a>
 					<li><a href="request_event_page.php" class="links">Request an Event</a>
-					<li><a href="DVD_Returns.html" class="links">Contact Us</a>
 				</ul>
 			</nav>
 		</header>
@@ -63,8 +62,9 @@
 	<p id="changed"><?php echo $changed; ?>
 	<form onSubmit="return checkForm(this)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="GET">		
 			<label for="email" class="label"> Change E-mail:</label>
-			<input type="email" id="email" name="email" class="entry" placeholder="<?php echo $email_session ?>"/> 
-			<br/><p class=error id="emailError"></p><br/>
+			<input type="email" id="email" name="email" class="entry" placeholder="<?php echo $email_session ?>"/> <br/>
+			<p class=error id="emailError"></p>
+			<br/>
 		
 			<label for="password" class="label">Change Password:</label>
 			<input type="password" name="password" id="password" class="entry"/> <br/>
