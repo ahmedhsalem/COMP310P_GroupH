@@ -22,6 +22,6 @@ $hours_remaining = floor(($remaining % 86400) / 3600);
 ?>
 <?php if ($days_remaining<=0 && $hours_remaining <=0) { 
 echo "<br>EXPIRED"; } else {
-echo "<br>".$days_remaining."days and".$hours_remaining."hours"; }?> 
+echo "<br>".$days_remaining." days and ".$hours_remaining." hours"; }?> 
 </body>
 </html>

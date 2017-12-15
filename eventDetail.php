@@ -5,10 +5,23 @@
       ob_end_clean();
       require_once('eventDetailIndex.php');
       require ('eventListIndex.php');
+      require_once ('feedback.php');
 ?>
 <!DOCTYPE html>
 <head>
   <link href="layout.css" rel="stylesheet" type="text/css"/>
+  <script>
+  $(function() {
+    $('form').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: 'feedback.php',
+            data: data,
+        });
+        return false;
+    }); 
+})
+  </script>
 </head>
 <style>
     
@@ -31,10 +44,20 @@ table, th, td {
     	width: 300px;
     	resize: none;
     	padding: 1px;
-
     }
 #content {
-height: 700px;
+height: 1400px;
+}
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 5px 10px 5px 10px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
 }
 </style>
 <body>
@@ -75,8 +98,11 @@ height: 700px;
                 <h2><?php echo $eventName;?></h2>
             </div>
             <div id="contentColumn">
+            	<?php echo "<img src='images/".$image."'width='600px' height='400px'>"; ?><br/>
                 <p6>Event Category: </p6>
                 <?php echo $eventCategory; ?>
+                <br><p7>Location: </p7>
+                <?php echo $eventLocation; ?>
                 <br><p1>Total Tickets: </p1>
                 <?php echo $totalTicket; ?>
                 <br/><p2>Ticket Price: </p2>
@@ -87,16 +113,22 @@ height: 700px;
                 <?php echo "$startDate&nbspto&nbsp$endDate" ?>
                 <br><p4>Event Description: </p4>
                 <?php echo "$eventDescription" ?>
-                <br><p5>Tickets Available: </p5>
+                <br/><p5>Tickets Available: </p5>
                 <?php echo $totalTicket-$soldTicket?>
-                <br><br><br>
+                <br/><br/><br/>
                 <?php
                 $BUYTICKET = "BUY TICKET"; ?>
-                <button type="button" id="buy"><?php echo "<a href='ticket.php?id={$rowid}'>".$BUYTICKET."</a></br>";
-                ?> </button>
+                <label class="button" id="buy" action=""><?php echo "<a href='ticket.php?id={$rowid}'>".$BUYTICKET."</a></br>";
+                ?> </label>
                
         </form> 
-                <br><br><br><br><br>
+                <br/><br/><br/><br/><br/>
+
+            
+            <?php
+               
+                if(date('Y-m-d h:i:s')>$startDate){
+                ?>
                 <h3>Rating & Comment</h3><br/>
                 
                 <?php
@@ -118,7 +150,7 @@ height: 700px;
             </div>
             <br/>
             <h3>Leave Feedback</h3>
-            <form onSubmit="return checkForm(this)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="GET">		
+            <form method ="POST">		
 			<table>
 				<tr>
 					<td>
@@ -142,12 +174,12 @@ height: 700px;
 						<textarea id = "description" name="description" rows="3" class="entry"></textarea>
 					</td>
 					<td>
-					<input style= "font-size: 15px; background: #f5f5f5;"
-		  			type="submit"  value="Add Comment" name="submit">
+					<input style = "font-size: 15px; background: #f5f5f5;"
+		  			type="submit"  value="Add Comment" name="submit" id="submit"/>
 		  			</td>
 			</table>
 			</form>
-            
+            <?php }?>
 	</div>
 	</div>
 <script type="text/javascript" src="settings_checker.js">

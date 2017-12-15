@@ -11,8 +11,10 @@ if(isset($_POST['submit'])) {
 		$roomid = $_POST['room'];
 		$locationid = $_POST['location'];
 		$ticketprice = test_input($_POST['ticket_price']);
-		$starttime = test_input($_POST['event_start_date_time']);
-		$endtime = test_input($_POST['event_end_date_time']);
+		$starttime = $_POST['event_start_date_time'];
+		$endtime = $_POST['event_end_date_time'];
+		$tstarttime = $_POST['ticket_start_date_time'];
+		$tendtime = $_POST['ticket_end_date_time'];
 		$description = test_input($_POST['description']);
 //Code Adapted From https://codewithawa.com/posts/image-upload-using-php-and-mysql-database
 		// POST image name
@@ -28,7 +30,7 @@ if(isset($_POST['submit'])) {
 		}
 		
 		$sql = "INSERT INTO `requested_event` (`description`, `event_name`, `category_id`, `event_capacity`, `location_id`, `ticket_price`, `user_id`, `event_start_date_time`, `event_end_date_time`, `ticket_start_date_time`, `ticket_end_date_time`, `room_id`, `approved`, image) VALUES
-		('$description', '$eventname', '$categoryid', '$capacity', '$locationid', '$ticketprice', '$userid_session', '2017-11-22 22:00:00', '2017-11-23 00:00:00', '2017-10-22 22:00:00', '2017-11-22 21:00:00','$roomid', 0, '$image')";
+		('$description', '$eventname', '$categoryid', '$capacity', '$locationid', '$ticketprice', '$userid_session', '$starttime', '$endtime', '$tstarttime', '$tendtime','$roomid', 0, '$image')";
 		mysqli_query($connection, $sql);
 		
 		  $msg = "";
