@@ -1,0 +1,17 @@
+     .entry, #address {
+    	float: right;
+    	width: 500px;
+    	resize: none;
+    	padding: 1px;
+    	margin-right: 200px;
+    }
+    
+      .error {
+    float: center;
+    color: red;
+    }
+    
+    #changed {
+    color: green;
+    float: center;
+    }

@@ -4,25 +4,7 @@
 <head>
   <title>Settings</title>
   <link href="layout.css" rel="stylesheet" type="text/css"/>
-  <style>
-      .entry, #address {
-    	float: right;
-    	width: 500px;
-    	resize: none;
-    	padding: 1px;
-    	margin-right: 200px;
-    }
-    
-      .error {
-    float: center;
-    color: red;
-    }
-    
-    #changed {
-    color: green;
-    float: center;
-    }
-  </style>
+  <link href="settings.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
 	<div id="wrapper">
@@ -40,17 +22,21 @@
 					<li><a href="eventList.php" class="links">Event List</a>
                                         <li><a href="search_event_page.php" class="links">Search Event</a>
 					<li><a href="request_event_page.php" class="links">Request an Event</a>
+                                        <?php if($userid_session == null) { ?>
+                                                
+                                        <li><a href="administrator.php" class="links">Administrator</a>
+                                           
+                                            
+                                        <?php } ?>
+                                        
+                                        
 				</ul>
 			</nav>
 		</header>
-		<form action="search_results_page.php">
-		<input type="submit" value="Go" id="go"/>
-		<input type="text" id="search" class="search"/>
-		<label for="search" id="label">Search:</label>
-		</form>
+		
 	</div>
 	<div id="columnRight">
-	Welcome, <?php echo " $login_session"; ?> </br>
+	Welcome, <?php echo " $welcomeName"; ?> </br>
 	<a href="myEvent.php">My Events</a></br>
 	<a href="settings_page.php">Settings</a></br>
 	<a href="logout.php"><button type="button">Logout</button></a>
@@ -62,9 +48,8 @@
 	<p id="changed"><?php echo $changed; ?>
 	<form onSubmit="return checkForm(this)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method ="GET">		
 			<label for="email" class="label"> Change E-mail:</label>
-			<input type="email" id="email" name="email" class="entry" placeholder="<?php echo $email_session ?>"/> <br/>
-			<p class=error id="emailError"></p>
-			<br/>
+			<input type="email" id="email" name="email" class="entry" placeholder="<?php echo $email_session ?>"/> 
+			<br/><p class=error id="emailError"></p><br/>
 		
 			<label for="password" class="label">Change Password:</label>
 			<input type="password" name="password" id="password" class="entry"/> <br/>

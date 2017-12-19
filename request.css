@@ -1,0 +1,28 @@
+  .entry, textarea, select {
+    	float: right;
+    	width: 500px;
+    	resize: none;
+    	padding: 1px;
+    	margin-right: 200px;
+    }
+    .label {
+    float: left;
+  
+}
+.checkbox-grid li {
+    display: block;
+    float: left;
+    width: 25%;
+}
+#content {
+height: 700px;
+}
+#upload {
+float: right;
+display: block;
+margin-right: 30%;
+}
+.error {
+    float: center;
+    color: red;
+    }

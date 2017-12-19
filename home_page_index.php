@@ -9,7 +9,7 @@ $query8=("SELECT * FROM requested_event WHERE approved='1'
       $eventNameBox1 = $row8['event_name'];
       $eventDescriptionBox1 = $row8['description'];
       $eventDateBox1 =$row8['event_start_date_time'];
-      $image = $row8['image'];
+      $image=$row8['image'];
       
       
           

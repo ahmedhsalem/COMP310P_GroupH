@@ -1,5 +1,4 @@
 # COMP310P_GroupH
 
-BEA's notes:
+The Initial Page is opening_page.php
 
-congfig.php : Creates connection with database

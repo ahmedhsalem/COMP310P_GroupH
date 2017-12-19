@@ -1,0 +1,26 @@
+ #leftContentColumn {
+        width:55%;
+        height: 389px;
+        border-style: solid;
+        float: left;
+        border-width: 1px 1px 1px 1px;
+        float: left;
+    }
+    
+    #rightContentColumn {
+        width:44%;
+        height: 389px;
+        border-style: solid;
+        float: right;
+        border-width: 1px 1px 1px 0px;
+        float: left;
+    }
+    .title {
+	font-size: 1.2em;
+	font-weight: bold;
+	text-decoration: underline;
+}
+	p2 {
+	text-decoration: underline;
+	font-weight: bold;
+	}

@@ -32,12 +32,7 @@ INSERT INTO room (location_id, room_name, capacity, price_per_hour) VALUES
 	(01, 'Grand Theater Room',1500, 500),
 	(02, 'Outdoor Courtyard',10000, 2000),
 	(03, 'Stage 1', 400, 200),
-	(01, 'Stage 1', 500, 250),
-	(02, 'Main Stage', 600, 300),
-	(02, 'Private Viewing', 50, 300),
-	(03, 'Grand Theater Room', 1600, 550),
-	(01, 'Outdoor Courtyard', 12000, 2600),
-	(01, 'Shakespeare Globe', 250, 300);
+	(01, 'Stage 1', 500, 250);
 	
 -- --------------------------------------------------------
 	
