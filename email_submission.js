@@ -56,7 +56,7 @@ function checkForm(form){
         document.getElementById("mobileError").innerHTML = telephoneError;
         submit = false;
     }
-    if (!phoneno.test(mobile)) {
+    if (!phoneno.test(phoneno)) {
     	document.getElementById("mobileError").innerHTML = "Please enter a Valid Phone Number";
 			submit = false;
     }
