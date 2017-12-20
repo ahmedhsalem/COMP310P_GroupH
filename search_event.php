@@ -1,5 +1,5 @@
 <?php
-	
+	// adapted from: http://phppot.com/php/advanced-search-using-php/
 	//setting variables - words searched for and where to search
 	$with_any_one_of = "";
 	$search_in = "";
